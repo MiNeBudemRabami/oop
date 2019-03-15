@@ -1,10 +1,6 @@
 ﻿#include "pch.h"
 #include <iostream>
-#include <string>
-#include <deque>
-#include "catch.hpp"
-
-using namespace std;
+#include "2_2_3.h"
 
 int main(int argc, char** argv)
 {
@@ -21,43 +17,7 @@ int main(int argc, char** argv)
 	{
 		string SearchString = argv[1];
 		string ReplaceString = argv[2];
-	
 
-		deque <char> buffer;
-		buffer.clear();
-		char c = ' ';
-
-		while (!cin.eof())
-		{
-			int temp = cin.get();
-			if (cin.eof())
-			{
-				break;
-			}
-			c = temp;
-
-			if (c == SearchString[buffer.size()])
-			{
-				buffer.push_back(c);
-
-				if (buffer.size() == SearchString.length())
-				{
-					cout << ReplaceString;
-					buffer.clear();
-				}
-			}
-			else
-			{
-				if (!buffer.empty())
-				{
-					while (!buffer.empty())
-					{
-						cout << buffer.front();
-						buffer.pop_front();
-					}
-				}
-				cout << c;
-			}
-		}
+		replace(SearchString, ReplaceString, cin, cout);
 	}
 }
