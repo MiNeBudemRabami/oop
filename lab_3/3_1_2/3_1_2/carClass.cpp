@@ -29,18 +29,6 @@ int carClass::GetGear()const
 
 carClass::direction carClass::GetDirection()
 {
-	if ((m_gear > 0) && (m_speed > 0))
-	{
-		m_direction = front;
-	}
-	if ((m_speed == 0))
-	{
-		m_direction = holding;
-	}
-	if ((m_gear < 0))
-	{
-		m_direction = back;
-	}
 	return m_direction;
 }
 
@@ -101,7 +89,7 @@ carClass::result carClass::turnOnEngine()
 
 carClass::result carClass::turnOffEngine()
 {
-	if (m_speed != 0)
+	if (m_speed != 0 || m_gear != 0)
 	{
 		return error;
 	}
@@ -127,6 +115,21 @@ carClass::result carClass::SetSpeed(int speed, int gear)
 		if (testGear(speed, gear) == success && (gear != 0 || speed < m_speed))
 		{
 			m_speed = speed;
+			if (m_speed == 0)
+			{
+				m_direction = holding;
+			}
+			else
+			{
+				if (gear == -1)
+				{
+					m_direction = back;
+				}
+				else
+				{
+					m_direction = front;
+				}
+			}
 			return success;
 		}
 		else
@@ -144,7 +147,7 @@ carClass::result carClass::SetGear(int gear)
 {
 	if (m_status == on)
 	{
-		if (testGear(m_speed, gear) == success && (gear != -1 || m_speed == 0))
+		if (testGear(m_speed, gear) == success && (gear != -1 || m_speed == 0) && (m_direction != back || gear <= 0))
 		{
 			m_gear = gear;
 			return success;
