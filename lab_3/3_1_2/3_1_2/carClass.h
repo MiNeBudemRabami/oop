@@ -23,7 +23,7 @@ public:
 
 	int GetGear() const;
 
-	result SetSpeed(int speed, int gear);
+	result SetSpeed(int speed);
 
 	result SetGear(int gear);
 

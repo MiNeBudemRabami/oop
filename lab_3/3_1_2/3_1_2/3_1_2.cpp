@@ -92,8 +92,7 @@ int main()
 		else if (command == "setSpeed")
 		{
 			cin >> speed;
-			gear = car.GetGear();
-			cout << printResult(car.SetSpeed(speed, gear)) << endl << endl;
+			cout << printResult(car.SetSpeed(speed)) << endl << endl;
 		}
 
 		else if (command == "setGear")

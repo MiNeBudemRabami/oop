@@ -107,12 +107,12 @@ carClass::result carClass::turnOffEngine()
 	}
 }
 
-carClass::result carClass::SetSpeed(int speed, int gear)
+carClass::result carClass::SetSpeed(int speed)
 {
 	
 	if (m_status == on)
 	{
-		if (testGear(speed, gear) == success && (gear != 0 || speed < m_speed))
+		if (testGear(speed, m_gear) == success && (m_gear != 0 || speed < m_speed))
 		{
 			m_speed = speed;
 			if (m_speed == 0)
@@ -121,7 +121,7 @@ carClass::result carClass::SetSpeed(int speed, int gear)
 			}
 			else
 			{
-				if (gear == -1)
+				if (m_gear == -1)
 				{
 					m_direction = back;
 				}
