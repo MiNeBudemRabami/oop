@@ -19,7 +19,8 @@ bool check(string SearchString, string ReplaceString, string in, string out)
 	return os.str() == out;
 }
 
-TEST_CASE("", "[single-file]") {
+TEST_CASE("check", "[single-file]") 
+{
 	REQUIRE(check("def", "ghi", "abcdefghidef", "abcghighighi"));
 	REQUIRE(check("x", "y", "abcdefghidef", "abcdefghidef"));
 	REQUIRE(check("x", "y", "", ""));

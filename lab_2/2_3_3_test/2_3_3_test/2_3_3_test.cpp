@@ -3,45 +3,59 @@
 #include <fstream>
 #include <string>
 #include <map>
+#include <set>
 
 using namespace std;
 
-typedef map<string, string> dictionaryType;
+typedef map<string, set<string>> dictionaryType;
 
-void toLow(string &inputWord)
+void toLow(string &word) //std locale
 {
-	for (unsigned int i = 0; i < inputWord.size(); i++)
+/*
+	for (unsigned int i = 0; i < word.size(); i++)
 	{
-		inputWord[i] = tolower(inputWord[i]);
+		word[i] = tolower(word[i]);
 	}
+*/
 }
 
-void savingChanges(dictionaryType &dictionary, string file)
+void savingChanges(dictionaryType &dictionary, string fileName)
 {
-	ofstream f(file);
+	ofstream file(fileName);
 	for (auto it = dictionary.begin(); it != dictionary.end(); ++it)
 	{
-		f << it->first << std::endl;
-		f << it->second << std::endl;
+		file << it->first << std::endl;
+		for (auto &elem : it->second)
+		{
+			file << elem << std::endl;
+		}
+		file << "#end" << std::endl;
 	}
 }
 
-void readingChanges(dictionaryType &dictionary, string file)
+void readingChanges(dictionaryType &dictionary, string fileName)
 {
-	ifstream f(file);
+	ifstream file(fileName);
 	string line, first;
 	bool flag = false;
-	while (getline(f, line))
+	while (getline(file, line))
 	{
 		if (!flag)
 		{
 			first = line;
+			flag = true;
 		}
 		else
 		{
-			dictionary[first] = line;
+			if (line != "#end")
+			{
+				dictionary[first].insert(line);
+			}
+			else
+			{
+				flag = false;
+			}
 		}
-		flag = !flag;
 	}
 }
 
@@ -54,15 +68,15 @@ void saveWithQuestion(dictionaryType &dictionary, string file, bool editFlag)
 
 	cout << "Save (y/n)?" << endl;
 
-	string ans;
-	while (cin >> ans)
+	string answer;
+	while (cin >> answer)
 	{
-		if (ans == "y")
+		if (answer == "y")
 		{
 			savingChanges(dictionary, file);
 			return;
 		}
-		else if (ans == "n")
+		else if (answer == "n")
 		{
 			return;
 		}
@@ -73,7 +87,7 @@ int main(int argc, char ** argv)
 {
 	if (argc != 2)
 	{
-		cout << "dictionary not mantioned" << endl;
+		cout << "dictionary not mentioned" << endl;
 	}
 	else
 	{
@@ -90,23 +104,39 @@ int main(int argc, char ** argv)
 				break;
 			}
 
-			auto it = dictionary.find(toLow(inputWord));
+			toLow(inputWord);
+
+			auto it = dictionary.find(inputWord);
 			if (it == dictionary.end())
 			{
 				cout << "plz, input new translation" << endl;
-				string line2;
-				if (getline(cin, line2))
+				string translation;
+				if (getline(cin, translation))
 				{
-					if (!line2.empty())
+					if (!translation.empty())
 					{
-						dictionary[toLow(inputWord)] = line2;
+						toLow(translation);
+
+						dictionary[inputWord].insert(translation);
+						dictionary[translation].insert(inputWord);
+
 						editFlag = true;
 					}
 				}
 			}
 			else
 			{
-				cout << it -> second << endl;
+				bool flag = false;
+				for (auto &elem : it->second)
+				{
+					if (flag)
+					{
+						cout << ", ";
+					}
+					cout << elem;
+					flag = true;
+				}
+				cout << endl;
 			}
 		}
 	}
