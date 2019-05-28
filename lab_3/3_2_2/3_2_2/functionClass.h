@@ -18,10 +18,10 @@ public:
 
 	void printfns()const;
 
-	std::map <std::string, double> setFunctions;
 
 private:
 
+	std::map <std::string, double> setFunctions;
 };
 
 

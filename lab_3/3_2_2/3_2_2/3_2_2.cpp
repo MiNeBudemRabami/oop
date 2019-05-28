@@ -104,17 +104,15 @@ int main()
 
 			if (variable.find(id))
 			{
-				cout << "not ready yet" << endl;
+				cout << variableClass::setVariables[id] << endl;
 			}
 
 			else if (function.find(id)) 
 			{
-				cout << "not ready yet" << endl;
+				cout << functionClass::setFunctions[id] << endl;
 			}
 
-
 		}
-
 
 		if (command == "printvars")
 		{
