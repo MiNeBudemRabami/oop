@@ -13,11 +13,10 @@ public:
 	carClass();
 	~carClass();
 
-	result testGear(int speed, int gear);
 
 	status GetEngineStatus() const;
 
-	direction GetDirection();
+	direction GetDirection() const;
 
 	int GetSpeed() const;
 
@@ -32,6 +31,8 @@ public:
 	result turnOffEngine();
 
 private:
+
+	result testGear(int speed, int gear);
 
 	status m_status = off;
 

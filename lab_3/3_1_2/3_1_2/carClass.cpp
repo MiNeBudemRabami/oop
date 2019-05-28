@@ -27,7 +27,7 @@ int carClass::GetGear()const
 	return m_gear;
 }
 
-carClass::direction carClass::GetDirection()
+carClass::direction carClass::GetDirection() const
 {
 	return m_direction;
 }
