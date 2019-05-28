@@ -18,6 +18,7 @@ public:
 
 	void printfns()const;
 
+	void print(std::string function);
 
 private:
 

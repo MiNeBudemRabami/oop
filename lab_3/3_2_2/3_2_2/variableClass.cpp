@@ -37,7 +37,7 @@ bool variableClass::let1(std::string variable1, std::string variable2)
 	}
 	else
 	{
-		std::cout << "both variables are undeclared" << std::endl;
+		std::cout << "second variable is undeclared" << std::endl;
 		return false;
 	}
 }
@@ -66,7 +66,7 @@ bool variableClass::find(std::string variable)
 	return result;
 }
 
-void variableClass::print(std::string variable) const
+void variableClass::print(std::string variable) 
 {
-	std::cout << variable << " = ";
+	std::cout << variable << " = " << setVariables[variable] << std::endl << std::endl;
 }

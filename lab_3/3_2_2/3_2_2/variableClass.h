@@ -20,7 +20,7 @@ public:
 
 	bool find(std::string variable);
 
-	void print(std::string variable)const;
+	void print(std::string variable);
 
 private:
 

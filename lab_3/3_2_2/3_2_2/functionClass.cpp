@@ -63,3 +63,8 @@ void functionClass::printfns() const
 	}
 	std::cout << std::endl;
 }
+
+void functionClass::print(std::string function)
+{
+	std::cout << setFunctions[function];
+}

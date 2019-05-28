@@ -20,16 +20,15 @@ int main()
 	{
 		cin >> command;
 
+		if (command == "var")
+		{
+			string id;
+			cin >> id;
+			variable.var(id);
+		}
+
 		if (command == "let")
 		{
-			if (command == "var")
-			{
-				string id;
-				cin >> id;
-
-				variable.var(id);
-			}
-
 			string id1;
 			string id2;
 			char equalsymb;
@@ -83,6 +82,8 @@ int main()
 				}
 				else
 				{
+					cin >> id3;
+
 					if (id3 == "")
 					{
 						cout << "second identif. is exepted" << endl;
@@ -104,12 +105,12 @@ int main()
 
 			if (variable.find(id))
 			{
-				cout << variableClass::setVariables[id] << endl;
+				variable.print(id);
 			}
 
 			else if (function.find(id)) 
 			{
-				cout << functionClass::setFunctions[id] << endl;
+				function.print(id);
 			}
 
 		}
