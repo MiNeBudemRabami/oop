@@ -4,6 +4,7 @@
 #include "..\3_2_2\variableClass.h"
 #include "..\3_2_2\functionClass.h"
 
+/*
 TEST_CASE("var", "[single-file]")
 {
 	variableClass test;
@@ -29,3 +30,5 @@ TEST_CASE("let variable get value from anotrher variable, bots are undeclared", 
 	variableClass test;
 	REQUIRE(test.let1("a", "b") == false);
 }
+
+*/

@@ -2,6 +2,9 @@
 
 #include <string>
 #include <map>
+#include <vector>
+
+class variableClass;
 
 class functionClass
 {
@@ -10,19 +13,19 @@ public:
 	functionClass();
 	~functionClass();
 
-	void fn3(std::string function, std::string variable1, std::string variable2, char operation);
+	bool fn3(std::string function, std::string variable1, std::string variable2, std::string operation);
 
-	void fn2(std::string function, std::string variable1);
+	bool fn2(std::string function, std::string variable1);
 
-	bool find(std::string function);
+	bool printfns(variableClass &vc)const;
 
-	void printfns()const;
+	bool print(std::string function, variableClass &vc)const;
 
-	void print(std::string function);
+	bool find(std::string function) const;
 
 private:
 
-	std::map <std::string, double> setFunctions;
+	std::map <std::string, std::vector<std::string>> setFunctions;
 };
 
 

@@ -15,6 +15,8 @@ variableClass::~variableClass()
 
 bool variableClass::var(std::string variable)
 {
+	std::cout << std::endl;
+
 	if (setVariables.find(variable) == setVariables.end())
 	{
 		setVariables[variable] = nan("");
@@ -23,12 +25,15 @@ bool variableClass::var(std::string variable)
 	else return false;
 }
 
-void variableClass::let2(std::string variable1, double variable2)
+bool variableClass::let1(std::string variable, double value)
 {
-	setVariables[variable1] = variable2;
+	std::cout << std::endl;
+
+	setVariables[variable] = value;
+	return true;
 }
 
-bool variableClass::let1(std::string variable1, std::string variable2)
+bool variableClass::let2(std::string variable1, std::string variable2)
 {
 	if (setVariables.find(variable2) != setVariables.end())
 	{
@@ -42,13 +47,14 @@ bool variableClass::let1(std::string variable1, std::string variable2)
 	}
 }
 
-void variableClass::printvars() const
+bool variableClass::printvars() const
 {
-	for (auto &a  : setVariables)
+	for (auto &variable  : setVariables)
 	{
-		std::cout << a.first << " = " << a.second << std::endl;
+		std::cout << variable.first << " = " << variable.second << std::endl;
 	}
 	std::cout << std::endl;
+	return true;
 }
 
 bool variableClass::find(std::string variable)
@@ -66,7 +72,25 @@ bool variableClass::find(std::string variable)
 	return result;
 }
 
-void variableClass::print(std::string variable) 
+double variableClass::get(std::string variable)
 {
-	std::cout << variable << " = " << setVariables[variable] << std::endl << std::endl;
+	return setVariables.find(variable)->second;
+}
+
+bool variableClass::print(std::string variable) 
+{
+	bool result;
+
+	if (setVariables.find(variable) == setVariables.end())
+	{
+		std::cout << "id isnt mantioned" << std::endl;
+		result = false;
+	}
+	else
+	{
+		std::cout << variable << " = " << setVariables[variable] << std::endl ;
+		result = true;
+	}
+	std::cout << std::endl;
+	return result;
 }

@@ -12,15 +12,17 @@ public:
 
 	bool var(std::string variable);
 
-	void let2(std::string variable1, double variable2);
+	bool let1(std::string variable1, double variable2);
 
-	bool let1(std::string variable1, std::string variable2);
+	bool let2(std::string variable1, std::string variable2);
 
-	void printvars()const;
+	bool printvars()const;
 
 	bool find(std::string variable);
 
-	void print(std::string variable);
+	double get(std::string variable);
+
+	bool print(std::string variable);
 
 private:
 

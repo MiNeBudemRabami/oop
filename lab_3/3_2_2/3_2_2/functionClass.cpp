@@ -1,4 +1,5 @@
 #include "pch.h"
+#include "variableClass.h"
 #include "functionClass.h"
 #include "iostream"
 
@@ -12,59 +13,113 @@ functionClass::~functionClass()
 {
 }
 
-void functionClass::fn3(std::string function, std::string variable1, std::string variable2, char operation)
+bool functionClass::fn3(std::string function, std::string variable1, std::string variable2, std::string operation)
 {
-	if (operation == '+')
-	{
-		setFunctions[function] = std::stod(variable1) + std::stod(variable2);
-	}
-	if (operation == '-')
-	{
-		setFunctions[function] = std::stod(variable1) - std::stod(variable2);
-	}
-	if (operation == '*')
-	{
-		setFunctions[function] = std::stod(variable1) * std::stod(variable2);
-	}
-	if (operation == '/')
-	{
-		setFunctions[function] = std::stod(variable1) / std::stod(variable2);
-	}
+	bool result = true;
+
+	setFunctions[function] = { variable1, operation, variable2 };
+
+	return result;
 }
 	
 
-void functionClass::fn2(std::string function, std::string variable)
+bool functionClass::fn2(std::string function, std::string variable)
 {
-	setFunctions[function] = std::stod(variable);
+	setFunctions[function] = { variable };
+	return true;
+
 }
 
 
 
-bool functionClass::find(std::string function)
+bool functionClass::find(std::string function) const
 {
 	bool result;
 
-	if (setFunctions.find(function) != setFunctions.end())
+	if (setFunctions.find(function) == setFunctions.end())
 	{
-		result = true;
+		result = false;
 	}
 	else
 	{
-		result = false;
+		result = true;
 	}
 	return result;
 }
 
-void functionClass::printfns() const
+bool functionClass::printfns(variableClass &vc) const
 {
-	for (auto &a : setFunctions)
+	for (auto &function : setFunctions)
 	{
-		std::cout << a.first << " = " << a.second << std::endl;
+		//std::cout << function.first << " = " << function.second << std::endl;
+		print(function.first, vc);
 	}
 	std::cout << std::endl;
+	return true;
 }
 
-void functionClass::print(std::string function)
+bool functionClass::print(std::string function, variableClass &vc) const
 {
-	std::cout << setFunctions[function];
+	if (find(function))
+	{ 
+		auto &fnData = setFunctions.find(function)->second;
+		double ans = 0;
+
+		if (fnData.size() == 1)
+		{
+			if (vc.find(fnData[0]))
+			{
+				ans = vc.get(fnData[0]);
+			}
+			else
+			{
+				return false;
+			}
+		}
+		else if (fnData.size() == 3)
+		{
+			if (vc.find(fnData[0]) && vc.find(fnData[2]))
+			{
+				double left = vc.get(fnData[0]);
+				double right = vc.get(fnData[2]);
+
+				if (fnData[1] == "+")
+				{
+					ans = left + right;
+				}
+				else if (fnData[1] == "-")
+				{
+					ans = left - right;
+				}
+				else if (fnData[1] == "*")
+				{
+					ans = left * right;
+				}
+				else if (fnData[1] == "/")
+				{
+					ans = left / right;
+				}
+				else
+				{
+					return false;
+				}
+			}
+			else
+			{
+				return false;
+			}
+		}
+		else
+		{
+			return false;
+		}
+
+		std::cout << ans << std::endl;
+		return true;
+	}
+	else
+	{
+		std::cout << "id isnt mantioned" << std::endl;
+		return false;
+	}
 }

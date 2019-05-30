@@ -5,129 +5,198 @@
 #include "functionClass.h"
 #include <vector>
 
-
 using namespace std;
+
+vector <string> readCommand()
+{
+	char c = ' ';
+	vector <string> setStrings;
+	string id;
+
+	for(;;)
+	{
+		for(;;)
+		{
+			c = cin.get();
+
+			if ((c == ' ') || (c == '\n'))
+			{
+				break;
+			}
+
+			id.push_back(c);
+		}
+		setStrings.push_back(id);
+		id.clear();
+
+		if (c == '\n')
+		{
+			break;
+		}
+	}
+
+	return setStrings;
+}
+
+bool checkCommand(vector <string> id)
+{
+	bool result = true;
+
+	if (id[0] == "var" || id[0] == "print")
+	{
+		if ((id.size() != 2))
+		{
+			result = false;
+		}
+	}
+
+	if (id[0] == "fn")
+	{
+		if (id.size() == 1 || id.size() == 2 || id.size() == 3 || id.size() == 5 || id.size() > 6)
+		{
+			result = false;
+		}
+
+		else if (id.size() == 6)
+		{
+			if (id[4] != "+" && id[4] != "-" && id[4] != "*" && id[4] != "/")
+			{
+				result = false;
+			}
+			if (id[2] != "=")
+			{
+				result = false;
+			}
+		}
+		else if (id.size() == 4)
+		{
+			if (id[2] != "=")
+			{
+				result = false;
+			}
+		}
+	}
+
+	if (id[0] == "printvars" || id[0] == "printfns")
+	{
+		if (id.size() != 1)
+		{
+			result = false;
+		}
+	}
+
+	if (id[0] == "let")
+	{
+		if (id.size() != 4)
+		{
+			result = false;
+		}
+	}
+
+	return result;
+}
 
 int main()
 {
 	variableClass variable;
 
 	functionClass function;
-	 
-	string command = "";
 
-	for(;;)
+	for (;;)
 	{
-		cin >> command;
+		vector <string> id = readCommand();
 
-		if (command == "var")
+		if (checkCommand(id))
 		{
-			string id;
-			cin >> id;
-			variable.var(id);
-		}
-
-		if (command == "let")
-		{
-			string id1;
-			string id2;
-			char equalsymb;
-
-			cin >> id1;
-			cin >> equalsymb;
-
-			if (equalsymb != '=')
+			if (id[0] == "var")
 			{
-				cout << "= is exepted" << endl;
+				variable.var(id[1]);
 			}
-			else
-			{
-				cin >> id2;
 
-				if (isdigit(id2[0]))
+			else if (id[0] == "let")
+			{
+				if (isdigit(id[3][0]))
 				{
-					variable.let2(id1, stod(id2));
+					variable.let1(id[1], stod(id[3]));
 				}
 				else
 				{
-					variable.let1(id1, id2);
+					variable.let2(id[1], id[3]);
 				}
+				cout << endl;
 			}
-			cout << endl;
-		}
 
-		if (command == "fn")
-		{
-			string id1;
-			string id2;
-			string id3;
-			char equalsymb;
-			char operationSymb;
-
-			cin >> id1;
-			cin >> equalsymb;
-
-			if (equalsymb != '=')
+			else if (id[0] == "fn")
 			{
-				cout << "= is exepted" << endl;
-			}
-			else
-			{
-				cin >> id2;
-				cin >> operationSymb;
+				string id1 = id[1];
+				string id2 = id[3];	
+
+				if (variable.find(id1))
+				{
+					cout << id1 << " name is already taken" << endl << endl; 
+				}
 				
-				if (operationSymb == '\n')
+				else if (variable.find(id2) == false)
+				{
+					cout << id2 << " wasnt mantioned" << endl << endl;
+				}
+
+				else if (id.size() == 4)
 				{
 					function.fn2(id1, id2);
 				}
-				else
-				{
-					cin >> id3;
 
-					if (id3 == "")
+				else  if(id.size() == 6)
+				{ 
+					string id3 = id[5];
+					string operation = id[4];
+					
+					if (variable.find(id3) == false)
 					{
-						cout << "second identif. is exepted" << endl;
+						cout << id3 << " wasnt mantioned" << endl << endl;
 					}
 
 					else
 					{
-						function.fn3(id1, id2, id3, operationSymb);
+						function.fn3(id1, id2, id3, operation);
 					}
 				}
+
 			}
-			
-		}
 
-		if (command == "print")
-		{
-			string id;
-			cin >> id;
-
-			if (variable.find(id))
+			else if (id[0] == "print")
 			{
-				variable.print(id);
-			}
+				string id1 = id[1];
 
-			else if (function.find(id)) 
+				if (variable.find(id1))
+				{
+					variable.print(id1);
+				}
+
+				else if (function.find(id1))
+				{
+					function.print(id1, variable);
+				}
+			}
+			else if (id[0] == "printvars")
 			{
-				function.print(id);
+				variable.printvars();
 			}
 
+			else if (id[0] == "printfns")
+			{
+				function.printfns(variable);
+			}
 		}
 
-		if (command == "printvars")
-		{
-			variable.printvars();
-		}
-
-		if (command == "printfns")
-		{
-			function.printfns();
-		}
-
-		if (cin.eof())
+		else if (cin.eof())
 		{
 			break;
 		}
+		else
+		{
+			cout << "unexpected command" << endl << endl;
+		}
+
 	}
 }
