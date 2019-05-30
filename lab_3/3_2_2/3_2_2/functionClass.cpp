@@ -34,17 +34,7 @@ bool functionClass::fn2(std::string function, std::string variable)
 
 bool functionClass::find(std::string function) const
 {
-	bool result;
-
-	if (setFunctions.find(function) == setFunctions.end())
-	{
-		result = false;
-	}
-	else
-	{
-		result = true;
-	}
-	return result;
+	return setFunctions.find(function) != setFunctions.end();
 }
 
 double functionClass::get(std::string function, variableClass &vc) const
@@ -115,7 +105,6 @@ bool functionClass::printfns(variableClass &vc) const
 {
 	for (auto &function : setFunctions)
 	{
-		//std::cout << function.first << " = " << function.second << std::endl;
 		print(function.first, vc);
 	}
 	std::cout << std::endl;
