@@ -110,18 +110,27 @@ int main()
 		{
 			if (id[0] == "var")
 			{
-				variable.var(id[1]);
+				if (!variable.var(id[1], function))
+				{
+					cout << id[1] << " name is already taken" << endl << endl;
+				}
 			}
 
 			else if (id[0] == "let")
 			{
 				if (isdigit(id[3][0]))
 				{
-					variable.let1(id[1], stod(id[3]));
+					if (!variable.let1(id[1], stod(id[3]), function))
+					{
+						cout << id[1] << " name is already taken" << endl << endl;
+					}
 				}
 				else
 				{
-					variable.let2(id[1], id[3], function);
+					if (!variable.let2(id[1], id[3], function))
+					{
+						cout << id[1] << " name is already taken" << endl << endl;
+					}
 				}
 				cout << endl;
 			}
@@ -131,7 +140,7 @@ int main()
 				string id1 = id[1];
 				string id2 = id[3];	
 
-				if (variable.find(id1))
+				if (variable.find(id1) || function.find(id1))
 				{
 					cout << id1 << " name is already taken" << endl << endl; 
 				}

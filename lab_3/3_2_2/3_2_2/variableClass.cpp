@@ -14,11 +14,9 @@ variableClass::~variableClass()
 }
 
 
-bool variableClass::var(std::string variable)
+bool variableClass::var(std::string variable, functionClass &fn)
 {
-	std::cout << std::endl;
-
-	if (setVariables.find(variable) == setVariables.end())
+	if (!find(variable) && !fn.find(variable))
 	{
 		setVariables[variable] = nan("");
 		return true;
@@ -26,9 +24,12 @@ bool variableClass::var(std::string variable)
 	else return false;
 }
 
-bool variableClass::let1(std::string variable, double value)
+bool variableClass::let1(std::string variable, double value, functionClass &fn)
 {
-	std::cout << std::endl;
+	if (fn.find(variable))
+	{
+		return false;
+	}
 
 	setVariables[variable] = value;
 	return true;
@@ -36,6 +37,11 @@ bool variableClass::let1(std::string variable, double value)
 
 bool variableClass::let2(std::string variable1, std::string variable2, functionClass &fn)
 {
+	if (fn.find(variable1))
+	{
+		return false;
+	}
+
 	if (setVariables.find(variable2) != setVariables.end())
 	{
 		setVariables[variable1] = setVariables[variable2];

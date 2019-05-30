@@ -27,6 +27,10 @@ public:
 
 private:
 
+	bool findAny(std::string anyName, variableClass &vc) const;
+
+	double getAny(std::string anyName, variableClass &vc) const;
+
 	std::map <std::string, std::vector<std::string>> setFunctions;
 };
 

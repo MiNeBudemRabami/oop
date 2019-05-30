@@ -46,9 +46,9 @@ double functionClass::get(std::string function, variableClass &vc) const
 
 		if (fnData.size() == 1)
 		{
-			if (vc.find(fnData[0]))
+			if (findAny(fnData[0], vc))
 			{
-				ans = vc.get(fnData[0]);
+				ans = getAny(fnData[0], vc);
 			}
 			else
 			{
@@ -57,10 +57,10 @@ double functionClass::get(std::string function, variableClass &vc) const
 		}
 		else if (fnData.size() == 3)
 		{
-			if (vc.find(fnData[0]) && vc.find(fnData[2]))
+			if (findAny(fnData[0], vc) && findAny(fnData[2], vc))
 			{
-				double left = vc.get(fnData[0]);
-				double right = vc.get(fnData[2]);
+				double left = getAny(fnData[0], vc);
+				double right = getAny(fnData[2], vc);
 
 				if (fnData[1] == "+")
 				{
@@ -123,4 +123,24 @@ bool functionClass::print(std::string function, variableClass &vc) const
 		std::cout << "id isnt mantioned" << std::endl;
 		return false;
 	}
+}
+
+bool functionClass::findAny(std::string anyName, variableClass &vc) const
+{
+	return vc.find(anyName) || find(anyName);
+}
+
+double functionClass::getAny(std::string anyName, variableClass &vc) const
+{
+	if (!findAny(anyName, vc))
+	{
+		return nan("");
+	}
+
+	if (find(anyName))
+	{
+		return get(anyName, vc);
+	}
+
+	return vc.get(anyName);
 }
