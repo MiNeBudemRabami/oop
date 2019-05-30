@@ -102,6 +102,9 @@ int main()
 
 	functionClass function;
 
+	cout.precision(2);
+	cout << std::fixed;
+
 	for (;;)
 	{
 		vector <string> id = readCommand();
@@ -145,7 +148,7 @@ int main()
 					cout << id1 << " name is already taken" << endl << endl; 
 				}
 				
-				else if (variable.find(id2) == false)
+				else if (!variable.find(id2) && !function.find(id2))
 				{
 					cout << id2 << " wasnt mantioned" << endl << endl;
 				}
@@ -160,7 +163,7 @@ int main()
 					string id3 = id[5];
 					string operation = id[4];
 					
-					if (variable.find(id3) == false)
+					if (!variable.find(id3) && !function.find(id3))
 					{
 						cout << id3 << " wasnt mantioned" << endl << endl;
 					}
