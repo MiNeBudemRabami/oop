@@ -23,6 +23,8 @@ public:
 
 	bool find(std::string function) const;
 
+	double get(std::string function, variableClass &vc) const;
+
 private:
 
 	std::map <std::string, std::vector<std::string>> setFunctions;

@@ -3,6 +3,8 @@
 #include <string>
 #include <map>
 
+class functionClass;
+
 class variableClass
 {
 public:
@@ -14,7 +16,7 @@ public:
 
 	bool let1(std::string variable1, double variable2);
 
-	bool let2(std::string variable1, std::string variable2);
+	bool let2(std::string variable1, std::string variable2, functionClass &fn);
 
 	bool printvars()const;
 

@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "variableClass.h"
 #include "iostream"
+#include "functionClass.h"
 
 
 variableClass::variableClass()
@@ -33,18 +34,22 @@ bool variableClass::let1(std::string variable, double value)
 	return true;
 }
 
-bool variableClass::let2(std::string variable1, std::string variable2)
+bool variableClass::let2(std::string variable1, std::string variable2, functionClass &fn)
 {
 	if (setVariables.find(variable2) != setVariables.end())
 	{
 		setVariables[variable1] = setVariables[variable2];
 		return true;
 	}
-	else
+
+	if (fn.find(variable2))
 	{
-		std::cout << "second variable is undeclared" << std::endl;
-		return false;
+		setVariables[variable1] = fn.get(variable2, *this);
+		return true;
 	}
+
+	std::cout << "second variable is undeclared" << std::endl;
+	return false;
 }
 
 bool variableClass::printvars() const

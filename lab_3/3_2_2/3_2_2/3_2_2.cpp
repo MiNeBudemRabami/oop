@@ -121,7 +121,7 @@ int main()
 				}
 				else
 				{
-					variable.let2(id[1], id[3]);
+					variable.let2(id[1], id[3], function);
 				}
 				cout << endl;
 			}

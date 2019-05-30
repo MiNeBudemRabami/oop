@@ -47,21 +47,10 @@ bool functionClass::find(std::string function) const
 	return result;
 }
 
-bool functionClass::printfns(variableClass &vc) const
-{
-	for (auto &function : setFunctions)
-	{
-		//std::cout << function.first << " = " << function.second << std::endl;
-		print(function.first, vc);
-	}
-	std::cout << std::endl;
-	return true;
-}
-
-bool functionClass::print(std::string function, variableClass &vc) const
+double functionClass::get(std::string function, variableClass &vc) const
 {
 	if (find(function))
-	{ 
+	{
 		auto &fnData = setFunctions.find(function)->second;
 		double ans = 0;
 
@@ -73,7 +62,7 @@ bool functionClass::print(std::string function, variableClass &vc) const
 			}
 			else
 			{
-				return false;
+				return nan("");
 			}
 		}
 		else if (fnData.size() == 3)
@@ -101,20 +90,43 @@ bool functionClass::print(std::string function, variableClass &vc) const
 				}
 				else
 				{
-					return false;
+					return nan("");
 				}
 			}
 			else
 			{
-				return false;
+				return nan("");
 			}
 		}
 		else
 		{
-			return false;
+			return nan("");
 		}
 
-		std::cout << ans << std::endl;
+		return ans;
+	}
+	else
+	{
+		return nan("");
+	}
+}
+
+bool functionClass::printfns(variableClass &vc) const
+{
+	for (auto &function : setFunctions)
+	{
+		//std::cout << function.first << " = " << function.second << std::endl;
+		print(function.first, vc);
+	}
+	std::cout << std::endl;
+	return true;
+}
+
+bool functionClass::print(std::string function, variableClass &vc) const
+{
+	if (find(function))
+	{ 
+		std::cout << get(function, vc) << std::endl;
 		return true;
 	}
 	else
