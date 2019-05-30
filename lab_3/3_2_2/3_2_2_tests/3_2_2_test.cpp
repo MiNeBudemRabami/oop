@@ -4,31 +4,32 @@
 #include "..\3_2_2\variableClass.h"
 #include "..\3_2_2\functionClass.h"
 
-/*
 TEST_CASE("var", "[single-file]")
 {
-	variableClass test;
-	REQUIRE(test.var("a") == true);
+	variableClass varib;
+	functionClass func;
+	REQUIRE(varib.var("a", func) == true);
 }
 
 TEST_CASE("let before var with same variable", "[single-file]")
 {
-	variableClass test;
-	test.let2("a", 2);
-	REQUIRE(test.var("a") == false);
+	variableClass varib;
+	functionClass func;
+	varib.let1("a", 2, func);
+	REQUIRE(varib.var("a", func) == false);
 }
 
 TEST_CASE("let variable get value from anotrher variable, first is undeclared", "[single-file]")
 {
-	variableClass test;
-	test.let2("b", 1);
-	REQUIRE(test.let1("a", "b") == true);
+	variableClass varib;
+	functionClass func;
+	varib.let1("b", 1, func);
+	REQUIRE(varib.let2("a", "b", func) == true);
 }
 
 TEST_CASE("let variable get value from anotrher variable, bots are undeclared", "[single-file]")
 {
-	variableClass test;
-	REQUIRE(test.let1("a", "b") == false);
+	variableClass varib;
+	functionClass func;
+	REQUIRE(varib.let2("a", "b", func) == false);
 }
-
-*/
