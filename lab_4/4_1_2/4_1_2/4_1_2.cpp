@@ -22,9 +22,9 @@ static bool comparePerimetr(IShape* shape1, IShape* shape2)
 	return (shape1->GetPerimetr() < shape2->GetPerimetr());
 }
 
-IShape* ShapeMaxPerimetr(vector <IShape*> shapeSet)
+IShape* ShapeMinPerimetr(vector <IShape*> shapeSet)
 {
-	return *max_element(shapeSet.begin(), shapeSet.end(), comparePerimetr);
+	return *min_element(shapeSet.begin(), shapeSet.end(), comparePerimetr);
 }
 
 IShape* ShapeMaxArea(vector <IShape*> shapeSet)
@@ -141,6 +141,6 @@ int main()
 	cout.precision(2);
 	cout << std::fixed;
 
-	cout << "shape with max perimetr " << to_string(ShapeMaxPerimetr(shapeSet)->GetPerimetr()) << " " << ShapeMaxPerimetr(shapeSet)->ToString()  << endl;
+	cout << "shape with min perimetr " << to_string(ShapeMinPerimetr(shapeSet)->GetPerimetr()) << " " << ShapeMinPerimetr(shapeSet)->ToString()  << endl;
 	cout << "shape with max area " << to_string(ShapeMaxArea(shapeSet)->GetArea()) << " " <<  ShapeMaxArea(shapeSet)->ToString()  << endl;
 }

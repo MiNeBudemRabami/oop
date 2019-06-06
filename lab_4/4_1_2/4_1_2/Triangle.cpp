@@ -24,10 +24,7 @@ double Triangle::GetArea() const
 
 double Triangle::GetPerimetr() const
 {
-	double side1 = sqrt((vertex2.x - vertex1.x)*(vertex2.x - vertex1.x) + (vertex2.y - vertex1.y)*(vertex2.y - vertex1.y));
-	double side2 = sqrt((vertex3.x - vertex2.x)*(vertex3.x - vertex2.x) + (vertex3.y - vertex2.y)*(vertex3.y - vertex2.y));
-	double side3 = sqrt((vertex3.x - vertex1.x)*(vertex3.x - vertex1.x) + (vertex3.y - vertex1.y)*(vertex3.y - vertex1.y));
-	return side1 + side2 + side3;
+	return GetLength(vertex1, vertex2) + GetLength(vertex2, vertex3) + GetLength(vertex1, vertex3);
 }
 
 std::string Triangle::ToString() const
@@ -58,4 +55,9 @@ Point Triangle::GetVertex2() const
 Point Triangle::GetVertex3() const
 {
 	return vertex3;
+}
+
+double Triangle::GetLength(Point v1, Point v2) const
+{
+	return sqrt((v2.x - v1.x)*(v2.x - v1.x) + (v2.y - v1.y)*(v2.y - v1.y));
 }

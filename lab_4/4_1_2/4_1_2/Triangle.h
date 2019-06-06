@@ -37,5 +37,7 @@ private:
 	uint32_t fillColor;
 
 	uint32_t outlineColor;
+
+	double GetLength(Point v1, Point v2) const;
 };
 
