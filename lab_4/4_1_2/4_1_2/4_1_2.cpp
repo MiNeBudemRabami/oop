@@ -68,12 +68,11 @@ int main()
 	cout.precision(2);
 	cout << std::fixed;
 
-	vector <string> parametrSet;
 	vector <unique_ptr<IShape>> shapeSet;
 
 	for (;;)
 	{
-		parametrSet = readCommand();
+		vector <string> parametrSet = readCommand();
 
 		if (cin.eof())
 		{

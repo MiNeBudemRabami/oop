@@ -20,6 +20,7 @@ TEST_CASE("circle processing", "[single-file]")
 	REQUIRE(circle.GetCenter().x == 10);
 	REQUIRE(circle.GetCenter().y == 5);
 	REQUIRE(circle.GetRadius() == 10);
+	REQUIRE(circle.ToString() == "Circle has radius 10.000000 center.x 10.000000 center.y 5.000000 outlineColor 111111 fillColor 222222");
 }
 
 TEST_CASE("line processing", "[single-file]")
@@ -39,6 +40,7 @@ TEST_CASE("line processing", "[single-file]")
 	REQUIRE(LineSegment.GetStartPoint().y == 5);
 	REQUIRE(LineSegment.GetEndPoint().x == 100);
 	REQUIRE(LineSegment.GetEndPoint().y == 50);
+	REQUIRE(LineSegment.ToString() == "Line has startPoint in 10.000000 5.000000 endPoint in 100.000000 50.000000 outlineCollor is 111111");
 }
 
 TEST_CASE("rectangle processing", "[single-file]")
@@ -55,7 +57,7 @@ TEST_CASE("rectangle processing", "[single-file]")
 	REQUIRE(rectangle.GetLeftTop().y == 5);
 	REQUIRE(rectangle.GetRightBottom().x == 20);
 	REQUIRE(rectangle.GetRightBottom().y == -5);
-
+	REQUIRE(rectangle.ToString() == "rectangle has topLeftPoint in 10.0000005.000000 hight 10.000000 weigth 10.000000 outlineColor 111111 fillColor 222222");
 }
 
 TEST_CASE("triangle processing", "[single-file]")
@@ -85,4 +87,6 @@ TEST_CASE("triangle processing", "[single-file]")
 
 	REQUIRE(triangle.GetVertex3().x == 10);
 	REQUIRE(triangle.GetVertex3().y == 0);
+
+	REQUIRE(triangle.ToString() == "triangle has vertex1 in 0.000000 0.000000 vertex2 in 0.000000 10.000000 vertex3 in 10.000000 0.000000 outlineColor 111111 fillColor 222222");
 }
