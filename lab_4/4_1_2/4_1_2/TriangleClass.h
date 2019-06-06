@@ -3,26 +3,39 @@
 #include "PointClass.h"
 #include <string>
 
-class TriangleClass
+class TriangleClass : public SolidShapeInterface
 {
 public:
-	TriangleClass();
+	TriangleClass(PointClass vertex1, PointClass vertex2, PointClass vertex3, uint32_t outlineColor, uint32_t fillColor);
+
 	~TriangleClass();
 
-	double getArea();
+	double getArea()const;
 
-	double getPerimetr();
+	double getPerimetr()const;
 
-	std::string toString();
+	std::string toString()const;
 
-	uint32_t getOutlineColor();
+	uint32_t getOutlineColor()const;
 
-	uint32_t getFillColor();
+	uint32_t getFillColor()const;
 
-	PointClass getVertex1();
+	PointClass getVertex1()const;
 
-	PointClass getVertex2();
+	PointClass getVertex2()const;
 
-	PointClass getVertex3();
+	PointClass getVertex3()const;
+
+private:
+
+	PointClass vertex1;
+	
+	PointClass vertex2;
+
+	PointClass vertex3;
+	
+	uint32_t fillColor;
+
+	uint32_t outlineColor;
 };
 

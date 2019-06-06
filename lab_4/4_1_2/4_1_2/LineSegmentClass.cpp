@@ -2,8 +2,11 @@
 #include "LineSegmentClass.h"
 
 
-LineSegmentClass::LineSegmentClass()
+LineSegmentClass::LineSegmentClass(PointClass startPoint, PointClass endPoint, uint32_t outlineColor)
 {
+	this->startPoint = startPoint;
+	this->endPoint = endPoint;
+	this->outlineColor = outlineColor;
 }
 
 
@@ -11,32 +14,32 @@ LineSegmentClass::~LineSegmentClass()
 {
 }
 
-double LineSegmentClass::getArea()
+double LineSegmentClass::getArea() const
 {
-	return 1;
+	return area;
 }
 
-double LineSegmentClass::getPerimetr()
+double LineSegmentClass::getPerimetr() const
 {
-	return 1;
+	return perimetr;
 }
 
-std::string LineSegmentClass::toString()
+std::string LineSegmentClass::toString() const
 {
-	return "";
+	return "Line has startPoint in " + std::to_string(startPoint.x) + " " + std::to_string(startPoint.y) + " endPoint in " + std::to_string(endPoint.x) + " " + std::to_string(endPoint.y) + " outlineCollor is " + std::to_string(outlineColor);
 }
 
-uint32_t LineSegmentClass::getOutlineColor()
+uint32_t LineSegmentClass::getOutlineColor() const
 {
-	return 1;
+	return outlineColor;
 }
 
-PointClass LineSegmentClass::getStatPoint()
+PointClass LineSegmentClass::getStartPoint() const
 {
-	return PointClass();
+	return startPoint;
 }
 
-PointClass LineSegmentClass::getEndPoint()
+PointClass LineSegmentClass::getEndPoint() const
 {
-	return PointClass();
+	return endPoint;
 }

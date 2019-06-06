@@ -30,7 +30,7 @@ double CircleClass::getPerimetr() const
 
 std::string CircleClass::toString() const
 {
-	return "radius " + std::to_string(radius) + " x " + std::to_string(center.x) + " y " + std::to_string(center.y) + " outlineColor " + std::to_string(outlineColor) + " fillColor " + std::to_string(fillColor);
+	return "Circle has radius " + std::to_string(radius) + " center.x " + std::to_string(center.x) + " center.y " + std::to_string(center.y) + " outlineColor " + std::to_string(outlineColor) + " fillColor " + std::to_string(fillColor);
 }
 
 uint32_t CircleClass::getOutlineColor() const

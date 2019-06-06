@@ -3,24 +3,35 @@
 #include "PointClass.h"
 #include <string>
 
-class LineSegmentClass
+class LineSegmentClass : public ShapeInterface
 {
 public:
-	LineSegmentClass();
+	LineSegmentClass(PointClass startPoint, PointClass endPoint, uint32_t outlineColor);
+
 	~LineSegmentClass();
 
-	double getArea();
+	double getArea()const;
 
-	double getPerimetr();
+	double getPerimetr()const;
 
-	std::string toString();
+	std::string toString()const;
 
-	uint32_t getOutlineColor();
+	uint32_t getOutlineColor()const;
 	
-	PointClass getStatPoint();
+	PointClass getStartPoint()const;
 
-	PointClass getEndPoint();
+	PointClass getEndPoint()const;
 
+private:
 
+	double const area = 0;
+
+	double const perimetr = 0;
+
+	uint32_t outlineColor;
+
+	PointClass startPoint;
+
+	PointClass endPoint;
 };
 
