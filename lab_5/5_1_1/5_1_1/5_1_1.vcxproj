@@ -163,11 +163,11 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="ComplexClass.h" />
+    <ClInclude Include="Complex.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="5_1_1.cpp" />
-    <ClCompile Include="ComplexClass.cpp" />
+    <ClCompile Include="Complex.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

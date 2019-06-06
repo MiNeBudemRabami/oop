@@ -1,9 +1,9 @@
 #include "pch.h"
-#include "RectangleClass.h"
+#include "Rectangle.h"
 #include <string>
 
 
-RectangleClass::RectangleClass(PointClass topLeft, double width, double hight, uint32_t outlineColor, uint32_t fillColor) 
+RectangleC::RectangleC(Point topLeft, double width, double hight, uint32_t outlineColor, uint32_t fillColor) 
 {
 	this->topLeft = topLeft;
 	this->width = width;
@@ -13,54 +13,54 @@ RectangleClass::RectangleClass(PointClass topLeft, double width, double hight, u
 }
 
 
-RectangleClass::~RectangleClass()
+RectangleC::~RectangleC()
 {
 }
 
-double RectangleClass::getArea() const
+double RectangleC::GetArea() const
 {
 	return width*hight;
 }
 
-double RectangleClass::getPerimetr() const
+double RectangleC::GetPerimetr() const
 {
 	return width*2 + hight*2;
 }
 
-std::string RectangleClass::toString() const
+std::string RectangleC::ToString() const
 {
 	return "rectangle has topLeftPoint in "+std::to_string(topLeft.x)+ std::to_string(topLeft.y) +" hight "+std::to_string(hight)+" weigth "+std::to_string(width)+" outlineColor " + std::to_string(outlineColor) + " fillColor " + std::to_string(fillColor);
 }
 
-uint32_t RectangleClass::getOutlineColor() const
+uint32_t RectangleC::GetOutlineColor() const
 {
 	return outlineColor;
 }
 
-uint32_t RectangleClass::getFillColor() const
+uint32_t RectangleC::GetFillColor() const
 {
 	return fillColor;
 }
 
-PointClass RectangleClass::getLeftTop() const
+Point RectangleC::GetLeftTop() const
 {
 	return topLeft;
 }
 
-PointClass RectangleClass::getRightBottom() const
+Point RectangleC::GetRightBottom() const
 {
-	PointClass rightBottom;
+	Point rightBottom;
 	rightBottom.x = topLeft.x + width;
 	rightBottom.y = topLeft.y - hight;
 	return rightBottom;
 }
 
-double RectangleClass::getWidth() const
+double RectangleC::GetWidth() const
 {
-	return 1;
+	return width;
 }
 
-double RectangleClass::getHeight() const
+double RectangleC::GetHeight() const
 {
-	return 1;
+	return hight;
 }

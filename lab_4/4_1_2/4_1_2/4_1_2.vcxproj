@@ -151,29 +151,29 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="CircleClass.h" />
-    <ClInclude Include="LineSegmentClass.h" />
+    <ClInclude Include="Circle.h" />
+    <ClInclude Include="LineSegment.h" />
     <ClInclude Include="pch.h" />
-    <ClInclude Include="PointClass.h" />
-    <ClInclude Include="RectangleClass.h" />
+    <ClInclude Include="Point.h" />
+    <ClInclude Include="Rectangle.h" />
     <ClInclude Include="resource.h" />
-    <ClInclude Include="ShapeInterface.h" />
-    <ClInclude Include="SolidShapeInterface.h" />
-    <ClInclude Include="TriangleClass.h" />
+    <ClInclude Include="IShape.h" />
+    <ClInclude Include="ISolidShape.h" />
+    <ClInclude Include="Triangle.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="4_1_2.cpp" />
-    <ClCompile Include="CircleClass.cpp" />
-    <ClCompile Include="LineSegmentClass.cpp" />
+    <ClCompile Include="Circle.cpp" />
+    <ClCompile Include="LineSegment.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="PointClass.cpp" />
-    <ClCompile Include="RectangleClass.cpp" />
-    <ClCompile Include="TriangleClass.cpp" />
+    <ClCompile Include="Point.cpp" />
+    <ClCompile Include="Rectangle.cpp" />
+    <ClCompile Include="Triangle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="4_1_2.rc" />

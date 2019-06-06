@@ -1,10 +1,10 @@
 #include "pch.h"
-#include "CircleClass.h"
+#include "Circle.h"
 #define _USE_MATH_DEFINES
 #include "math.h"
 #include <string>
 
-CircleClass::CircleClass(PointClass center, double radius, uint32_t outlineColor, uint32_t fillColor)
+Circle::Circle(Point center, double radius, uint32_t outlineColor, uint32_t fillColor)
 {
 	this->center = center;
 	this->radius = radius;
@@ -13,42 +13,42 @@ CircleClass::CircleClass(PointClass center, double radius, uint32_t outlineColor
 }
 
 
-CircleClass::~CircleClass()
+Circle::~Circle()
 {
 }
 
 
-double CircleClass::getArea() const
+double Circle::GetArea() const
 {
 	return M_PI*radius*radius;
 }
 
-double CircleClass::getPerimetr() const
+double Circle::GetPerimetr() const
 {
 	return 2*M_PI*radius;
 }
 
-std::string CircleClass::toString() const
+std::string Circle::ToString() const
 {
 	return "Circle has radius " + std::to_string(radius) + " center.x " + std::to_string(center.x) + " center.y " + std::to_string(center.y) + " outlineColor " + std::to_string(outlineColor) + " fillColor " + std::to_string(fillColor);
 }
 
-uint32_t CircleClass::getOutlineColor() const
+uint32_t Circle::GetOutlineColor() const
 {
 	return outlineColor;
 }
 
-uint32_t CircleClass::getFillColor() const
+uint32_t Circle::GetFillColor() const
 {
 	return fillColor;
 }
 
-PointClass CircleClass::getCenter() const
+Point Circle::GetCenter() const
 {
 	return center;
 }
 
-double CircleClass::getRadius() const
+double Circle::GetRadius() const
 {
 	return radius;
 }

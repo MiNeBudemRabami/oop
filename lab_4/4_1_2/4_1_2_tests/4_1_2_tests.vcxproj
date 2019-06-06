@@ -127,21 +127,19 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\4_1_2\CircleClass.h" />
-    <ClInclude Include="..\4_1_2\LineSegmentClass.h" />
-    <ClInclude Include="..\4_1_2\PointClass.h" />
-    <ClInclude Include="..\4_1_2\RectangleClass.h" />
-    <ClInclude Include="..\4_1_2\ShapeInterface.h" />
-    <ClInclude Include="..\4_1_2\SolidShapeInterface.h" />
-    <ClInclude Include="..\4_1_2\TriangleClass.h" />
+    <ClCompile Include="..\4_1_2\Circle.cpp" />
+    <ClCompile Include="..\4_1_2\LineSegment.cpp" />
+    <ClCompile Include="..\4_1_2\Point.cpp" />
+    <ClCompile Include="..\4_1_2\Rectangle.cpp" />
+    <ClCompile Include="..\4_1_2\Triangle.cpp" />
+    <ClCompile Include="tests.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\4_1_2\CircleClass.cpp" />
-    <ClCompile Include="..\4_1_2\LineSegmentClass.cpp" />
-    <ClCompile Include="..\4_1_2\PointClass.cpp" />
-    <ClCompile Include="..\4_1_2\RectangleClass.cpp" />
-    <ClCompile Include="..\4_1_2\TriangleClass.cpp" />
-    <ClCompile Include="tests.cpp" />
+    <ClInclude Include="..\4_1_2\Circle.h" />
+    <ClInclude Include="..\4_1_2\LineSegment.h" />
+    <ClInclude Include="..\4_1_2\Point.h" />
+    <ClInclude Include="..\4_1_2\Rectangle.h" />
+    <ClInclude Include="..\4_1_2\Triangle.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

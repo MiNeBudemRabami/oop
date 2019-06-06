@@ -2,32 +2,32 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "shapeInterface.h"
-#include "triangleClass.h"
-#include "rectangleClass.h"
-#include "circleClass.h"
-#include "lineSegmentClass.h"
+#include "IShape.h"
+#include "triangle.h"
+#include "rectangle.h"
+#include "circle.h"
+#include "LineSegment.h"
 #include <algorithm>
 #include <deque>
 
 using namespace std;
 
-static bool compareArea(ShapeInterface* shape1, ShapeInterface* shape2)
+static bool compareArea(IShape* shape1, IShape* shape2)
 {
-	return (shape1->getArea() < shape2->getArea());
+	return (shape1->GetArea() < shape2->GetArea());
 }
 
-static bool comparePerimetr(ShapeInterface* shape1, ShapeInterface* shape2)
+static bool comparePerimetr(IShape* shape1, IShape* shape2)
 {
-	return (shape1->getPerimetr() < shape2->getPerimetr());
+	return (shape1->GetPerimetr() < shape2->GetPerimetr());
 }
 
-ShapeInterface* ShapeMaxPerimetr(vector <ShapeInterface*> shapeSet)
+IShape* ShapeMaxPerimetr(vector <IShape*> shapeSet)
 {
 	return *max_element(shapeSet.begin(), shapeSet.end(), comparePerimetr);
 }
 
-ShapeInterface* ShapeMaxArea(vector <ShapeInterface*> shapeSet)
+IShape* ShapeMaxArea(vector <IShape*> shapeSet)
 {
 	return *max_element(shapeSet.begin(), shapeSet.end(), compareArea);
 }
@@ -66,13 +66,11 @@ vector <string> readCommand()
 int main()
 {
 	vector <string> parametrSet;
-	deque <CircleClass> circleSet;
-	deque <RectangleClass> rectangleSet;
-	deque <TriangleClass> triangleSet;
-	deque <LineSegmentClass> lineSegmentSet;
-	vector <ShapeInterface*> shapeSet;
-
-
+	deque <Circle> circleSet;
+	deque <RectangleC> rectangleSet;
+	deque <Triangle> triangleSet;
+	deque <LineSegment> LineSegmentSet;
+	vector <IShape*> shapeSet;
 
 	for (;;)
 	{
@@ -85,56 +83,56 @@ int main()
 
 		if (parametrSet[0] == "circle")
 		{
-			PointClass center;
+			Point center;
 			center.x = stod(parametrSet[1]);
 			center.y = stod(parametrSet[2]);
 
-			CircleClass circle(center, stod(parametrSet[3]), stol(parametrSet[4], 0, 16), stol(parametrSet[5], 0, 16));
+			Circle circle(center, stod(parametrSet[3]), stol(parametrSet[4], 0, 16), stol(parametrSet[5], 0, 16));
 			circleSet.push_back(circle);
 			shapeSet.push_back(&circleSet.back());
 		}
 
-		if (parametrSet[0] == "lineSegment")
+		if (parametrSet[0] == "LineSegment")
 		{
-			PointClass startPoint;
+			Point startPoint;
 			startPoint.x = stod(parametrSet[1]);
 			startPoint.y = stod(parametrSet[2]);
 
-			PointClass endPoint;
+			Point endPoint;
 			endPoint.x = stod(parametrSet[1]);
 			endPoint.y = stod(parametrSet[2]);
 
-			LineSegmentClass lineSegment(startPoint, endPoint, stol(parametrSet[4], 0, 16));
-			lineSegmentSet.push_back(lineSegment);
-			shapeSet.push_back(&lineSegmentSet.back());
+			LineSegment LineSegment(startPoint, endPoint, stol(parametrSet[4], 0, 16));
+			LineSegmentSet.push_back(LineSegment);
+			shapeSet.push_back(&LineSegmentSet.back());
 		}
 
 		else if (parametrSet[0] == "rectangle")
 		{
-			PointClass topLeft;
+			Point topLeft;
 			topLeft.x = stod(parametrSet[1]);
 			topLeft.y = stod(parametrSet[2]);
 
-			RectangleClass rectangle(topLeft, stod(parametrSet[3]), stod(parametrSet[4]), stol(parametrSet[5], 0, 16), stol(parametrSet[6], 0, 16));
+			RectangleC rectangle(topLeft, stod(parametrSet[3]), stod(parametrSet[4]), stol(parametrSet[5], 0, 16), stol(parametrSet[6], 0, 16));
 			rectangleSet.push_back(rectangle);
 			shapeSet.push_back(&rectangleSet.back());
 		}
 
 		else if (parametrSet[0] == "triangle")
 		{
-			PointClass vertex1;
+			Point vertex1;
 			vertex1.x = stod(parametrSet[1]);
 			vertex1.y = stod(parametrSet[2]);
 
-			PointClass vertex2;
+			Point vertex2;
 			vertex1.x = stod(parametrSet[3]);
 			vertex1.y = stod(parametrSet[4]);
 
-			PointClass vertex3;
+			Point vertex3;
 			vertex1.x = stod(parametrSet[5]);
 			vertex1.y = stod(parametrSet[6]);
 			
-			TriangleClass triangle(vertex1, vertex2, vertex3, stol(parametrSet[7], 0, 16), stol(parametrSet[8], 0, 16));
+			Triangle triangle(vertex1, vertex2, vertex3, stol(parametrSet[7], 0, 16), stol(parametrSet[8], 0, 16));
 			triangleSet.push_back(triangle);
 			shapeSet.push_back(&triangleSet.back());
 		}
@@ -143,6 +141,6 @@ int main()
 	cout.precision(2);
 	cout << std::fixed;
 
-	cout << "shape with max perimetr " << to_string(ShapeMaxPerimetr(shapeSet)->getPerimetr()) << " " << ShapeMaxPerimetr(shapeSet)->toString()  << endl;
-	cout << "shape with max area " << to_string(ShapeMaxArea(shapeSet)->getArea()) << " " <<  ShapeMaxArea(shapeSet)->toString()  << endl;
+	cout << "shape with max perimetr " << to_string(ShapeMaxPerimetr(shapeSet)->GetPerimetr()) << " " << ShapeMaxPerimetr(shapeSet)->ToString()  << endl;
+	cout << "shape with max area " << to_string(ShapeMaxArea(shapeSet)->GetArea()) << " " <<  ShapeMaxArea(shapeSet)->ToString()  << endl;
 }
