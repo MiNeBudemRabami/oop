@@ -12,24 +12,24 @@
 
 using namespace std;
 
-static bool compareArea(IShape* shape1, IShape* shape2)
+static bool compareArea(unique_ptr<IShape> const& shape1, unique_ptr<IShape> const& shape2)
 {
 	return (shape1->GetArea() < shape2->GetArea());
 }
 
-static bool comparePerimetr(IShape* shape1, IShape* shape2)
+static bool comparePerimetr(unique_ptr<IShape> const& shape1, unique_ptr<IShape> const& shape2)
 {
 	return (shape1->GetPerimetr() < shape2->GetPerimetr());
 }
 
-IShape* ShapeMinPerimetr(vector <IShape*> shapeSet)
+IShape& ShapeMinPerimetr(vector <unique_ptr<IShape>> const& shapeSet)
 {
-	return *min_element(shapeSet.begin(), shapeSet.end(), comparePerimetr);
+	return **min_element(shapeSet.begin(), shapeSet.end(), comparePerimetr);
 }
 
-IShape* ShapeMaxArea(vector <IShape*> shapeSet)
+IShape& ShapeMaxArea(vector <unique_ptr<IShape>> const& shapeSet)
 {
-	return *max_element(shapeSet.begin(), shapeSet.end(), compareArea);
+	return **max_element(shapeSet.begin(), shapeSet.end(), compareArea);
 }
 
 vector <string> readCommand()
@@ -65,12 +65,11 @@ vector <string> readCommand()
 
 int main()
 {
+	cout.precision(2);
+	cout << std::fixed;
+
 	vector <string> parametrSet;
-	deque <Circle> circleSet;
-	deque <RectangleC> rectangleSet;
-	deque <Triangle> triangleSet;
-	deque <LineSegment> LineSegmentSet;
-	vector <IShape*> shapeSet;
+	vector <unique_ptr<IShape>> shapeSet;
 
 	for (;;)
 	{
@@ -81,18 +80,16 @@ int main()
 			break;
 		}
 
-		if (parametrSet[0] == "circle")
+		else if (parametrSet[0] == "circle")
 		{
 			Point center;
 			center.x = stod(parametrSet[1]);
 			center.y = stod(parametrSet[2]);
 
-			Circle circle(center, stod(parametrSet[3]), stol(parametrSet[4], 0, 16), stol(parametrSet[5], 0, 16));
-			circleSet.push_back(circle);
-			shapeSet.push_back(&circleSet.back());
+			shapeSet.push_back(make_unique<Circle>(center, stod(parametrSet[3]), stol(parametrSet[4], 0, 16), stol(parametrSet[5], 0, 16)));
 		}
 
-		if (parametrSet[0] == "LineSegment")
+		else if (parametrSet[0] == "LineSegment")
 		{
 			Point startPoint;
 			startPoint.x = stod(parametrSet[1]);
@@ -102,9 +99,7 @@ int main()
 			endPoint.x = stod(parametrSet[1]);
 			endPoint.y = stod(parametrSet[2]);
 
-			LineSegment LineSegment(startPoint, endPoint, stol(parametrSet[4], 0, 16));
-			LineSegmentSet.push_back(LineSegment);
-			shapeSet.push_back(&LineSegmentSet.back());
+			shapeSet.push_back(make_unique<LineSegment>(startPoint, endPoint, stol(parametrSet[4], 0, 16)));
 		}
 
 		else if (parametrSet[0] == "rectangle")
@@ -113,9 +108,7 @@ int main()
 			topLeft.x = stod(parametrSet[1]);
 			topLeft.y = stod(parametrSet[2]);
 
-			RectangleC rectangle(topLeft, stod(parametrSet[3]), stod(parametrSet[4]), stol(parametrSet[5], 0, 16), stol(parametrSet[6], 0, 16));
-			rectangleSet.push_back(rectangle);
-			shapeSet.push_back(&rectangleSet.back());
+			shapeSet.push_back(make_unique<RectangleC>(topLeft, stod(parametrSet[3]), stod(parametrSet[4]), stol(parametrSet[5], 0, 16), stol(parametrSet[6], 0, 16)));
 		}
 
 		else if (parametrSet[0] == "triangle")
@@ -132,15 +125,13 @@ int main()
 			vertex1.x = stod(parametrSet[5]);
 			vertex1.y = stod(parametrSet[6]);
 			
-			Triangle triangle(vertex1, vertex2, vertex3, stol(parametrSet[7], 0, 16), stol(parametrSet[8], 0, 16));
-			triangleSet.push_back(triangle);
-			shapeSet.push_back(&triangleSet.back());
+			shapeSet.push_back(make_unique<Triangle>(vertex1, vertex2, vertex3, stol(parametrSet[7], 0, 16), stol(parametrSet[8], 0, 16)));
 		}
 	}
 
-	cout.precision(2);
-	cout << std::fixed;
-
-	cout << "shape with min perimetr " << to_string(ShapeMinPerimetr(shapeSet)->GetPerimetr()) << " " << ShapeMinPerimetr(shapeSet)->ToString()  << endl;
-	cout << "shape with max area " << to_string(ShapeMaxArea(shapeSet)->GetArea()) << " " <<  ShapeMaxArea(shapeSet)->ToString()  << endl;
+	if (shapeSet.size() != 0)
+	{
+		cout << "shape with min perimetr " << ShapeMinPerimetr(shapeSet).GetPerimetr() << " " << ShapeMinPerimetr(shapeSet).ToString() << endl;
+		cout << "shape with max area " << ShapeMaxArea(shapeSet).GetArea() << " " << ShapeMaxArea(shapeSet).ToString() << endl;
+	}
 }
