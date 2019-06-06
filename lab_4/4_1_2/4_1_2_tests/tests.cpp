@@ -1,5 +1,5 @@
 #define CATCH_CONFIG_MAIN
-#include <catch.hpp>
+#include "../../../catch.hpp"
 
 #include "..\4_1_2\CircleClass.h"
 #include "..\4_1_2\LineSegmentClass.h"

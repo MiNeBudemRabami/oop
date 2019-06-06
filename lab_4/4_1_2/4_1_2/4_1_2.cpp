@@ -59,8 +59,7 @@ vector <string> readCommand()
 	{
 		parametrSet.push_back(parametr);
 	}
-	
-	
+
 	return parametrSet;
 }
 

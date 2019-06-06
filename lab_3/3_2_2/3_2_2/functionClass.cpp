@@ -27,7 +27,6 @@ bool functionClass::fn2(std::string function, std::string variable)
 {
 	setFunctions[function] = { variable };
 	return true;
-
 }
 
 
