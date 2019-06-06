@@ -29,7 +29,7 @@ double RectangleC::GetPerimetr() const
 
 std::string RectangleC::ToString() const
 {
-	return "rectangle has topLeftPoint in "+std::to_string(topLeft.x)+ std::to_string(topLeft.y) +" hight "+std::to_string(hight)+" weigth "+std::to_string(width)+" outlineColor " + std::to_string(outlineColor) + " fillColor " + std::to_string(fillColor);
+	return "rectangle has topLeftPoint in "+std::to_string(topLeft.x)+ std::to_string(topLeft.y) +" hight "+std::to_string(hight)+" weigth "+std::to_string(width) + " " + SolidShape::ToString();
 }
 
 uint32_t RectangleC::GetOutlineColor() const

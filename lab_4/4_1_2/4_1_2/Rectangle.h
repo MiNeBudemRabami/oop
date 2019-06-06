@@ -1,9 +1,9 @@
 #pragma once
 #include "Point.h"
-#include "ISolidShape.h"
+#include "SolidShape.h"
 #include <string>
 
-class RectangleC : public ISolidShape
+class RectangleC : public SolidShape
 {
 public:
 	RectangleC(Point topLeft, double width, double hight, uint32_t outlineColor, uint32_t fillColor);

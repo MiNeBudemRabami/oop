@@ -1,9 +1,9 @@
 #pragma once
-#include "ISolidShape.h"
+#include "SolidShape.h"
 #include "Point.h"
 #include <string>
 
-class Triangle : public ISolidShape
+class Triangle : public SolidShape
 {
 public:
 	Triangle(Point vertex1, Point vertex2, Point vertex3, uint32_t outlineColor, uint32_t fillColor);

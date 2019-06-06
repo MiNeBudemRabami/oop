@@ -32,7 +32,7 @@ double Triangle::GetPerimetr() const
 
 std::string Triangle::ToString() const
 {
-	return "triangle has vertex1 in " + std::to_string(vertex1.x) + " " + std::to_string(vertex1.y) + " vertex2 in " + std::to_string(vertex2.x) + " " + std::to_string(vertex2.y) + " vertex3 in " + std::to_string(vertex3.x) + " " + std::to_string(vertex3.y) + " outlineColor " + std::to_string(outlineColor) + " fillColor " + std::to_string(fillColor);
+	return "triangle has vertex1 in " + std::to_string(vertex1.x) + " " + std::to_string(vertex1.y) + " vertex2 in " + std::to_string(vertex2.x) + " " + std::to_string(vertex2.y) + " vertex3 in " + std::to_string(vertex3.x) + " " + std::to_string(vertex3.y) + " " + SolidShape::ToString();
 }
 
 uint32_t Triangle::GetOutlineColor() const

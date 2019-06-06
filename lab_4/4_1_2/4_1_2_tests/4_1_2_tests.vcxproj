@@ -131,6 +131,7 @@
     <ClCompile Include="..\4_1_2\LineSegment.cpp" />
     <ClCompile Include="..\4_1_2\Point.cpp" />
     <ClCompile Include="..\4_1_2\Rectangle.cpp" />
+    <ClCompile Include="..\4_1_2\SolidShape.cpp" />
     <ClCompile Include="..\4_1_2\Triangle.cpp" />
     <ClCompile Include="tests.cpp" />
   </ItemGroup>
@@ -139,6 +140,7 @@
     <ClInclude Include="..\4_1_2\LineSegment.h" />
     <ClInclude Include="..\4_1_2\Point.h" />
     <ClInclude Include="..\4_1_2\Rectangle.h" />
+    <ClInclude Include="..\4_1_2\SolidShape.h" />
     <ClInclude Include="..\4_1_2\Triangle.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

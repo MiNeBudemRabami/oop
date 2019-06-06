@@ -1,9 +1,9 @@
 #pragma once
-#include "ISolidShape.h"
+#include "SolidShape.h"
 #include "Point.h"
 #include <string>
 
-class Circle : public ISolidShape
+class Circle : public SolidShape
 {
 public:
 	Circle(Point center, double radius, uint32_t outlineColor, uint32_t fillColor);
