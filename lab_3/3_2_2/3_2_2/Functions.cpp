@@ -100,28 +100,14 @@ double Functions::get(std::string function, Variables const& vc) const
 	}
 }
 
-bool Functions::printfns(Variables const& vc) const
+std::map<std::string, double> Functions::GetAllData(Variables const& vc) const
 {
+	std::map<std::string, double> result;
 	for (auto &function : setFunctions)
 	{
-		print(function.first, vc);
+		result[function.first] = get(function.first, vc);
 	}
-	std::cout << std::endl;
-	return true;
-}
-
-bool Functions::print(std::string function, Variables const& vc) const
-{
-	if (find(function))
-	{ 
-		std::cout << get(function, vc) << std::endl;
-		return true;
-	}
-	else
-	{
-		std::cout << "id isnt mantioned" << std::endl;
-		return false;
-	}
+	return result;
 }
 
 bool Functions::findAny(std::string anyName, Variables const& vc) const

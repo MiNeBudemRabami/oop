@@ -17,13 +17,11 @@ public:
 
 	bool fn2(std::string function, std::string variable1);
 
-	bool printfns(Variables const& vc)const;
-
-	bool print(std::string function, Variables const& vc)const;
-
 	bool find(std::string function) const;
 
 	double get(std::string function, Variables const& vc) const;
+
+	std::map<std::string, double> GetAllData(Variables const& vc) const;
 
 private:
 

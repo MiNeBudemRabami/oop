@@ -179,17 +179,24 @@ int main()
 
 				if (calculator.Find(id1))
 				{
-					calculator.Print(id1);
+					std::cout << id1 << " = " << calculator.Get(id1) << std::endl;
 				}
 			}
 			else if (id[0] == "printvars")
 			{
-				calculator.PrintVars();
+				for (auto &variable : calculator.GetAllVariables())
+				{
+					std::cout << variable.first << " = " << variable.second << std::endl;
+				}
+				std::cout << std::endl;
 			}
 
 			else if (id[0] == "printfns")
 			{
-				calculator.PrintFns();
+				for (auto &function : calculator.GetAllFunctions())
+				{
+					std::cout << function.first << " = " << function.second << std::endl;
+				}
 			}
 		}
 

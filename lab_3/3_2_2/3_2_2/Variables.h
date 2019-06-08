@@ -18,13 +18,11 @@ public:
 
 	bool let2(std::string variable1, std::string variable2, Functions &fn);
 
-	bool printvars()const;
-
 	bool find(std::string variable) const;
 
 	double get(std::string variable) const;
 
-	bool print(std::string variable) const;
+	std::map <std::string, double> const& GetAllData() const;
 
 private:
 

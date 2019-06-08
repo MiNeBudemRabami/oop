@@ -25,6 +25,15 @@ bool Calculator::Find(std::string const & anyName) const
 	return m_variables.find(anyName) || m_functions.find(anyName);
 }
 
+double Calculator::Get(std::string const & anyName) const
+{
+	if (m_variables.find(anyName))
+	{
+		return m_variables.get(anyName);
+	}
+	return m_functions.get(anyName, m_variables);
+}
+
 bool Calculator::Fn(std::string const & function, std::string const & variable1)
 {
 	return m_functions.fn2(function, variable1);
@@ -35,21 +44,12 @@ bool Calculator::Fn(std::string const & function, std::string const & variable1,
 	return m_functions.fn3(function, variable1, variable2, operation);
 }
 
-bool Calculator::Print(std::string const & anyName) const
+std::map<std::string, double> const & Calculator::GetAllVariables() const
 {
-	if (m_variables.find(anyName))
-	{
-		return m_variables.print(anyName);
-	}
-	return m_functions.print(anyName, m_variables);
+	return m_variables.GetAllData();
 }
 
-bool Calculator::PrintVars() const
+std::map<std::string, double> Calculator::GetAllFunctions() const
 {
-	return m_variables.printvars();
-}
-
-bool Calculator::PrintFns() const
-{
-	return m_functions.printfns(m_variables);
+	return m_functions.GetAllData(m_variables);
 }

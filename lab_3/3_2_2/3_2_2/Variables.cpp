@@ -1,6 +1,5 @@
 #include "pch.h"
 #include "Variables.h"
-#include "iostream"
 #include "Functions.h"
 
 
@@ -54,18 +53,7 @@ bool Variables::let2(std::string variable1, std::string variable2, Functions &fn
 		return true;
 	}
 
-	std::cout << "second variable is undeclared" << std::endl;
 	return false;
-}
-
-bool Variables::printvars() const
-{
-	for (auto &variable  : setVariables)
-	{
-		std::cout << variable.first << " = " << variable.second << std::endl;
-	}
-	std::cout << std::endl;
-	return true;
 }
 
 bool Variables::find(std::string variable) const
@@ -88,20 +76,7 @@ double Variables::get(std::string variable) const
 	return setVariables.find(variable)->second;
 }
 
-bool Variables::print(std::string variable) const
+std::map<std::string, double> const & Variables::GetAllData() const
 {
-	bool result;
-
-	if (setVariables.find(variable) == setVariables.end())
-	{
-		std::cout << "id isnt mantioned" << std::endl;
-		result = false;
-	}
-	else
-	{
-		std::cout << variable << " = " << setVariables.find(variable)->second << std::endl ;
-		result = true;
-	}
-	std::cout << std::endl;
-	return result;
+	return setVariables;
 }
