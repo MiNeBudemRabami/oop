@@ -1,8 +1,7 @@
 ﻿#include "pch.h"
 #include <iostream>
 #include <string>
-#include "variableClass.h"
-#include "functionClass.h"
+#include "Calculator.h"
 #include <vector>
 
 using namespace std;
@@ -98,9 +97,7 @@ bool checkCommand(vector <string> id)
 
 int main()
 {
-	variableClass variable;
-
-	functionClass function;
+	Calculator calculator;
 
 	cout.precision(2);
 	cout << std::fixed;
@@ -113,7 +110,7 @@ int main()
 		{
 			if (id[0] == "var")
 			{
-				if (!variable.var(id[1], function))
+				if (!calculator.Var(id[1]))
 				{
 					cout << id[1] << " name is already taken" << endl << endl;
 				}
@@ -123,14 +120,14 @@ int main()
 			{
 				if (isdigit(id[3][0]))
 				{
-					if (!variable.let1(id[1], stod(id[3]), function))
+					if (!calculator.Let(id[1], stod(id[3])))
 					{
 						cout << id[1] << " name is already taken" << endl << endl;
 					}
 				}
 				else
 				{
-					if (!variable.let2(id[1], id[3], function))
+					if (!calculator.Let(id[1], id[3]))
 					{
 						cout << id[1] << " name is already taken" << endl << endl;
 					}
@@ -143,34 +140,34 @@ int main()
 				string id1 = id[1];
 				string id2 = id[3];	
 
-				if (variable.find(id1) || function.find(id1))
+				if (calculator.Find(id1))
 				{
 					cout << id1 << " name is already taken" << endl << endl; 
 				}
 				
-				else if (!variable.find(id2) && !function.find(id2))
+				else if (!calculator.Find(id2))
 				{
 					cout << id2 << " wasnt mantioned" << endl << endl;
 				}
 
 				else if (id.size() == 4)
 				{
-					function.fn2(id1, id2);
+					calculator.Fn(id1, id2);
 				}
 
-				else  if(id.size() == 6)
+				else if (id.size() == 6)
 				{ 
 					string id3 = id[5];
 					string operation = id[4];
 					
-					if (!variable.find(id3) && !function.find(id3))
+					if (!calculator.Find(id3))
 					{
 						cout << id3 << " wasnt mantioned" << endl << endl;
 					}
 
 					else
 					{
-						function.fn3(id1, id2, id3, operation);
+						calculator.Fn(id1, id2, id3, operation);
 					}
 				}
 
@@ -180,24 +177,19 @@ int main()
 			{
 				string id1 = id[1];
 
-				if (variable.find(id1))
+				if (calculator.Find(id1))
 				{
-					variable.print(id1);
-				}
-
-				else if (function.find(id1))
-				{
-					function.print(id1, variable);
+					calculator.Print(id1);
 				}
 			}
 			else if (id[0] == "printvars")
 			{
-				variable.printvars();
+				calculator.PrintVars();
 			}
 
 			else if (id[0] == "printfns")
 			{
-				function.printfns(variable);
+				calculator.PrintFns();
 			}
 		}
 

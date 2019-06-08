@@ -1,20 +1,20 @@
 #include "pch.h"
-#include "variableClass.h"
+#include "Variables.h"
 #include "iostream"
-#include "functionClass.h"
+#include "Functions.h"
 
 
-variableClass::variableClass()
+Variables::Variables()
 {
 }
 
 
-variableClass::~variableClass()
+Variables::~Variables()
 {
 }
 
 
-bool variableClass::var(std::string variable, functionClass &fn)
+bool Variables::var(std::string variable, Functions &fn)
 {
 	if (!find(variable) && !fn.find(variable))
 	{
@@ -24,7 +24,7 @@ bool variableClass::var(std::string variable, functionClass &fn)
 	else return false;
 }
 
-bool variableClass::let1(std::string variable, double value, functionClass &fn)
+bool Variables::let1(std::string variable, double value, Functions &fn)
 {
 	if (fn.find(variable))
 	{
@@ -35,7 +35,7 @@ bool variableClass::let1(std::string variable, double value, functionClass &fn)
 	return true;
 }
 
-bool variableClass::let2(std::string variable1, std::string variable2, functionClass &fn)
+bool Variables::let2(std::string variable1, std::string variable2, Functions &fn)
 {
 	if (fn.find(variable1))
 	{
@@ -58,7 +58,7 @@ bool variableClass::let2(std::string variable1, std::string variable2, functionC
 	return false;
 }
 
-bool variableClass::printvars() const
+bool Variables::printvars() const
 {
 	for (auto &variable  : setVariables)
 	{
@@ -68,7 +68,7 @@ bool variableClass::printvars() const
 	return true;
 }
 
-bool variableClass::find(std::string variable)
+bool Variables::find(std::string variable) const
 {
 	bool result;
 
@@ -83,12 +83,12 @@ bool variableClass::find(std::string variable)
 	return result;
 }
 
-double variableClass::get(std::string variable)
+double Variables::get(std::string variable) const
 {
 	return setVariables.find(variable)->second;
 }
 
-bool variableClass::print(std::string variable) 
+bool Variables::print(std::string variable) const
 {
 	bool result;
 
@@ -99,7 +99,7 @@ bool variableClass::print(std::string variable)
 	}
 	else
 	{
-		std::cout << variable << " = " << setVariables[variable] << std::endl ;
+		std::cout << variable << " = " << setVariables.find(variable)->second << std::endl ;
 		result = true;
 	}
 	std::cout << std::endl;

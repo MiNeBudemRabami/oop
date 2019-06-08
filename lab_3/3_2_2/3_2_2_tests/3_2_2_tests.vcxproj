@@ -127,13 +127,13 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\3_2_2\functionClass.cpp" />
-    <ClCompile Include="..\3_2_2\variableClass.cpp" />
+    <ClCompile Include="..\3_2_2\Functions.cpp" />
+    <ClCompile Include="..\3_2_2\Variables.cpp" />
     <ClCompile Include="3_2_2_test.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\3_2_2\functionClass.h" />
-    <ClInclude Include="..\3_2_2\variableClass.h" />
+    <ClInclude Include="..\3_2_2\Functions.h" />
+    <ClInclude Include="..\3_2_2\Variables.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

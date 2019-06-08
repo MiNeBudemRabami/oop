@@ -18,10 +18,13 @@
     <ClInclude Include="pch.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="functionClass.h">
+    <ClInclude Include="Variables.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="variableClass.h">
+    <ClInclude Include="Functions.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Calculator.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
@@ -32,10 +35,13 @@
     <ClCompile Include="3_2_2.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="variableClass.cpp">
+    <ClCompile Include="Variables.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="functionClass.cpp">
+    <ClCompile Include="Functions.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Calculator.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>

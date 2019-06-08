@@ -1,19 +1,19 @@
 #include "pch.h"
-#include "variableClass.h"
-#include "functionClass.h"
+#include "Variables.h"
+#include "Functions.h"
 #include "iostream"
 
 
-functionClass::functionClass()
+Functions::Functions()
 {
 }
 
 
-functionClass::~functionClass()
+Functions::~Functions()
 {
 }
 
-bool functionClass::fn3(std::string function, std::string variable1, std::string variable2, std::string operation)
+bool Functions::fn3(std::string function, std::string variable1, std::string variable2, std::string operation)
 {
 	bool result = true;
 
@@ -23,7 +23,7 @@ bool functionClass::fn3(std::string function, std::string variable1, std::string
 }
 	
 
-bool functionClass::fn2(std::string function, std::string variable)
+bool Functions::fn2(std::string function, std::string variable)
 {
 	setFunctions[function] = { variable };
 	return true;
@@ -31,12 +31,12 @@ bool functionClass::fn2(std::string function, std::string variable)
 
 
 
-bool functionClass::find(std::string function) const
+bool Functions::find(std::string function) const
 {
 	return setFunctions.find(function) != setFunctions.end();
 }
 
-double functionClass::get(std::string function, variableClass &vc) const
+double Functions::get(std::string function, Variables const& vc) const
 {
 	if (find(function))
 	{
@@ -100,7 +100,7 @@ double functionClass::get(std::string function, variableClass &vc) const
 	}
 }
 
-bool functionClass::printfns(variableClass &vc) const
+bool Functions::printfns(Variables const& vc) const
 {
 	for (auto &function : setFunctions)
 	{
@@ -110,7 +110,7 @@ bool functionClass::printfns(variableClass &vc) const
 	return true;
 }
 
-bool functionClass::print(std::string function, variableClass &vc) const
+bool Functions::print(std::string function, Variables const& vc) const
 {
 	if (find(function))
 	{ 
@@ -124,12 +124,12 @@ bool functionClass::print(std::string function, variableClass &vc) const
 	}
 }
 
-bool functionClass::findAny(std::string anyName, variableClass &vc) const
+bool Functions::findAny(std::string anyName, Variables const& vc) const
 {
 	return vc.find(anyName) || find(anyName);
 }
 
-double functionClass::getAny(std::string anyName, variableClass &vc) const
+double Functions::getAny(std::string anyName, Variables const& vc) const
 {
 	if (!findAny(anyName, vc))
 	{
