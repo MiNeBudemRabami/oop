@@ -1,13 +1,10 @@
 #include "pch.h"
 #include "Variables.h"
 #include "Functions.h"
-#include "iostream"
-
 
 Functions::Functions()
 {
 }
-
 
 Functions::~Functions()
 {
@@ -15,11 +12,8 @@ Functions::~Functions()
 
 bool Functions::fn3(std::string function, std::string variable1, std::string variable2, std::string operation)
 {
-	bool result = true;
-
 	setFunctions[function] = { variable1, operation, variable2 };
-
-	return result;
+	return true;
 }
 	
 
@@ -28,8 +22,6 @@ bool Functions::fn2(std::string function, std::string variable)
 	setFunctions[function] = { variable };
 	return true;
 }
-
-
 
 bool Functions::find(std::string function) const
 {

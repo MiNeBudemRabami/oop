@@ -2,16 +2,13 @@
 #include "Variables.h"
 #include "Functions.h"
 
-
 Variables::Variables()
 {
 }
 
-
 Variables::~Variables()
 {
 }
-
 
 bool Variables::var(std::string variable, Functions &fn)
 {
@@ -20,7 +17,7 @@ bool Variables::var(std::string variable, Functions &fn)
 		setVariables[variable] = nan("");
 		return true;
 	}
-	else return false;
+	return false;
 }
 
 bool Variables::let1(std::string variable, double value, Functions &fn)
@@ -58,17 +55,7 @@ bool Variables::let2(std::string variable1, std::string variable2, Functions &fn
 
 bool Variables::find(std::string variable) const
 {
-	bool result;
-
-	if (setVariables.find(variable) != setVariables.end())
-	{
-		result = true;
-	}
-	else 
-	{
-		result = false;
-	}
-	return result;
+	return setVariables.find(variable) != setVariables.end();
 }
 
 double Variables::get(std::string variable) const
