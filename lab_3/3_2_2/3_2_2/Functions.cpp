@@ -10,25 +10,25 @@ Functions::~Functions()
 {
 }
 
-bool Functions::Fn(std::string function, std::string variable1, std::string variable2, std::string operation)
+bool Functions::Fn(std::string const& function, std::string const& variable1, std::string const& variable2, std::string const& operation)
 {
 	setFunctions[function] = { variable1, operation, variable2 };
 	return true;
 }
 	
 
-bool Functions::Fn(std::string function, std::string variable)
+bool Functions::Fn(std::string const& function, std::string const& variable)
 {
 	setFunctions[function] = { variable };
 	return true;
 }
 
-bool Functions::find(std::string function) const
+bool Functions::find(std::string const& function) const
 {
 	return setFunctions.find(function) != setFunctions.end();
 }
 
-double Functions::get(std::string function, Variables const& vc) const
+double Functions::get(std::string const& function, Variables const& vc) const
 {
 	if (find(function))
 	{
@@ -102,12 +102,12 @@ std::map<std::string, double> Functions::GetAllData(Variables const& vc) const
 	return result;
 }
 
-bool Functions::findAny(std::string anyName, Variables const& vc) const
+bool Functions::findAny(std::string const& anyName, Variables const& vc) const
 {
 	return vc.find(anyName) || find(anyName);
 }
 
-double Functions::getAny(std::string anyName, Variables const& vc) const
+double Functions::getAny(std::string const& anyName, Variables const& vc) const
 {
 	if (!findAny(anyName, vc))
 	{

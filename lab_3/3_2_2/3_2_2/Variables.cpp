@@ -10,7 +10,7 @@ Variables::~Variables()
 {
 }
 
-bool Variables::var(std::string variable, Functions &fn)
+bool Variables::var(std::string const& variable, Functions &fn)
 {
 	if (!find(variable) && !fn.find(variable))
 	{
@@ -20,7 +20,7 @@ bool Variables::var(std::string variable, Functions &fn)
 	return false;
 }
 
-bool Variables::Let(std::string variable, double value, Functions &fn)
+bool Variables::Let(std::string const& variable, double value, Functions &fn)
 {
 	if (fn.find(variable))
 	{
@@ -31,7 +31,7 @@ bool Variables::Let(std::string variable, double value, Functions &fn)
 	return true;
 }
 
-bool Variables::Let(std::string variable1, std::string variable2, Functions &fn)
+bool Variables::Let(std::string const& variable1, std::string const& variable2, Functions &fn)
 {
 	if (fn.find(variable1))
 	{
@@ -53,12 +53,12 @@ bool Variables::Let(std::string variable1, std::string variable2, Functions &fn)
 	return false;
 }
 
-bool Variables::find(std::string variable) const
+bool Variables::find(std::string const& variable) const
 {
 	return setVariables.find(variable) != setVariables.end();
 }
 
-double Variables::get(std::string variable) const
+double Variables::get(std::string const& variable) const
 {
 	return setVariables.find(variable)->second;
 }
