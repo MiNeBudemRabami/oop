@@ -12,27 +12,27 @@ Functions::~Functions()
 
 bool Functions::Fn(std::string const& function, std::string const& variable1, std::string const& variable2, std::string const& operation)
 {
-	setFunctions[function] = { variable1, operation, variable2 };
+	m_setFunctions[function] = { variable1, operation, variable2 };
 	return true;
 }
 	
 
 bool Functions::Fn(std::string const& function, std::string const& variable)
 {
-	setFunctions[function] = { variable };
+	m_setFunctions[function] = { variable };
 	return true;
 }
 
 bool Functions::find(std::string const& function) const
 {
-	return setFunctions.find(function) != setFunctions.end();
+	return m_setFunctions.find(function) != m_setFunctions.end();
 }
 
 double Functions::get(std::string const& function, Variables const& vc) const
 {
 	if (find(function))
 	{
-		auto &fnData = setFunctions.find(function)->second;
+		auto &fnData = m_setFunctions.find(function)->second;
 		double ans = 0;
 
 		if (fnData.size() == 1)
@@ -95,7 +95,7 @@ double Functions::get(std::string const& function, Variables const& vc) const
 std::map<std::string, double> Functions::GetAllData(Variables const& vc) const
 {
 	std::map<std::string, double> result;
-	for (auto &function : setFunctions)
+	for (auto &function : m_setFunctions)
 	{
 		result[function.first] = get(function.first, vc);
 	}

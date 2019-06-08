@@ -26,6 +26,6 @@ public:
 
 private:
 
-	std::map <std::string, double> setVariables;
+	std::map <std::string, double> m_setVariables;
 };
 

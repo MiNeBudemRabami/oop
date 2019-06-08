@@ -29,7 +29,7 @@ private:
 
 	double getAny(std::string const& anyName, Variables const& vc) const;
 
-	std::map <std::string, std::vector<std::string>> setFunctions;
+	std::map <std::string, std::vector<std::string>> m_setFunctions;
 };
 
 
