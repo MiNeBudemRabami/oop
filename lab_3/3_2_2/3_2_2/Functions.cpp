@@ -23,23 +23,23 @@ bool Functions::Fn(std::string const& function, std::string const& variable)
 	return true;
 }
 
-bool Functions::find(std::string const& function) const
+bool Functions::Find(std::string const& function) const
 {
 	return m_setFunctions.find(function) != m_setFunctions.end();
 }
 
-double Functions::get(std::string const& function, Variables const& vc) const
+double Functions::Get(std::string const& function, Variables const& vc) const
 {
-	if (find(function))
+	if (Find(function))
 	{
 		auto &fnData = m_setFunctions.find(function)->second;
 		double ans = 0;
 
 		if (fnData.size() == 1)
 		{
-			if (findAny(fnData[0], vc))
+			if (FindAny(fnData[0], vc))
 			{
-				ans = getAny(fnData[0], vc);
+				ans = GetAny(fnData[0], vc);
 			}
 			else
 			{
@@ -48,10 +48,10 @@ double Functions::get(std::string const& function, Variables const& vc) const
 		}
 		else if (fnData.size() == 3)
 		{
-			if (findAny(fnData[0], vc) && findAny(fnData[2], vc))
+			if (FindAny(fnData[0], vc) && FindAny(fnData[2], vc))
 			{
-				double left = getAny(fnData[0], vc);
-				double right = getAny(fnData[2], vc);
+				double left = GetAny(fnData[0], vc);
+				double right = GetAny(fnData[2], vc);
 
 				if (fnData[1] == "+")
 				{
@@ -97,27 +97,27 @@ std::map<std::string, double> Functions::GetAllData(Variables const& vc) const
 	std::map<std::string, double> result;
 	for (auto &function : m_setFunctions)
 	{
-		result[function.first] = get(function.first, vc);
+		result[function.first] = Get(function.first, vc);
 	}
 	return result;
 }
 
-bool Functions::findAny(std::string const& anyName, Variables const& vc) const
+bool Functions::FindAny(std::string const& anyName, Variables const& vc) const
 {
-	return vc.find(anyName) || find(anyName);
+	return vc.Find(anyName) || Find(anyName);
 }
 
-double Functions::getAny(std::string const& anyName, Variables const& vc) const
+double Functions::GetAny(std::string const& anyName, Variables const& vc) const
 {
-	if (!findAny(anyName, vc))
+	if (!FindAny(anyName, vc))
 	{
 		return nan("");
 	}
 
-	if (find(anyName))
+	if (Find(anyName))
 	{
-		return get(anyName, vc);
+		return Get(anyName, vc);
 	}
 
-	return vc.get(anyName);
+	return vc.Get(anyName);
 }

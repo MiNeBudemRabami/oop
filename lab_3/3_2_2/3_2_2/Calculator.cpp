@@ -7,7 +7,7 @@ Calculator::Calculator()
 
 bool Calculator::Var(std::string const & variable)
 {
-	return m_variables.var(variable, m_functions);
+	return m_variables.Var(variable, m_functions);
 }
 
 bool Calculator::Let(std::string const & variable1, double variable2)
@@ -22,16 +22,16 @@ bool Calculator::Let(std::string const & variable1, std::string const & variable
 
 bool Calculator::Find(std::string const & anyName) const
 {
-	return m_variables.find(anyName) || m_functions.find(anyName);
+	return m_variables.Find(anyName) || m_functions.Find(anyName);
 }
 
 double Calculator::Get(std::string const & anyName) const
 {
-	if (m_variables.find(anyName))
+	if (m_variables.Find(anyName))
 	{
-		return m_variables.get(anyName);
+		return m_variables.Get(anyName);
 	}
-	return m_functions.get(anyName, m_variables);
+	return m_functions.Get(anyName, m_variables);
 }
 
 bool Calculator::Fn(std::string const & function, std::string const & variable1)

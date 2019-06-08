@@ -10,9 +10,9 @@ Variables::~Variables()
 {
 }
 
-bool Variables::var(std::string const& variable, Functions &fn)
+bool Variables::Var(std::string const& variable, Functions &fn)
 {
-	if (!find(variable) && !fn.find(variable))
+	if (!Find(variable) && !fn.Find(variable))
 	{
 		m_setVariables[variable] = nan("");
 		return true;
@@ -22,7 +22,7 @@ bool Variables::var(std::string const& variable, Functions &fn)
 
 bool Variables::Let(std::string const& variable, double value, Functions &fn)
 {
-	if (fn.find(variable))
+	if (fn.Find(variable))
 	{
 		return false;
 	}
@@ -33,7 +33,7 @@ bool Variables::Let(std::string const& variable, double value, Functions &fn)
 
 bool Variables::Let(std::string const& variable1, std::string const& variable2, Functions &fn)
 {
-	if (fn.find(variable1))
+	if (fn.Find(variable1))
 	{
 		return false;
 	}
@@ -44,21 +44,21 @@ bool Variables::Let(std::string const& variable1, std::string const& variable2, 
 		return true;
 	}
 
-	if (fn.find(variable2))
+	if (fn.Find(variable2))
 	{
-		m_setVariables[variable1] = fn.get(variable2, *this);
+		m_setVariables[variable1] = fn.Get(variable2, *this);
 		return true;
 	}
 
 	return false;
 }
 
-bool Variables::find(std::string const& variable) const
+bool Variables::Find(std::string const& variable) const
 {
 	return m_setVariables.find(variable) != m_setVariables.end();
 }
 
-double Variables::get(std::string const& variable) const
+double Variables::Get(std::string const& variable) const
 {
 	return m_setVariables.find(variable)->second;
 }

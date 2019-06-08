@@ -6,7 +6,7 @@
 
 using namespace std;
 
-vector <string> readCommand()
+vector <string> ReadCommand()
 {
 	char c = ' ';
 	vector <string> setStrings;
@@ -37,7 +37,7 @@ vector <string> readCommand()
 	return setStrings;
 }
 
-bool checkCommand(vector <string> id)
+bool CheckCommand(vector <string> id)
 {
 	bool result = true;
 
@@ -104,9 +104,9 @@ int main()
 
 	for (;;)
 	{
-		vector <string> id = readCommand();
+		vector <string> id = ReadCommand();
 
-		if (checkCommand(id))
+		if (CheckCommand(id))
 		{
 			if (id[0] == "var")
 			{
