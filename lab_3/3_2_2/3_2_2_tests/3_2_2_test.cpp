@@ -1,57 +1,51 @@
 #define CATCH_CONFIG_MAIN
 #include <catch.hpp>
 
-#include "..\3_2_2\Variables.h"
-#include "..\3_2_2\Functions.h"
+#include "..\3_2_2\Calculator.h"
 
 TEST_CASE("var", "[single-file]")
 {
-	Variables varib;
-	Functions func;
-	REQUIRE(varib.Var("a", func) == true);
+	Calculator calc;
+	REQUIRE(calc.Var("a") == true);
 }
 
 TEST_CASE("let before var with same variable", "[single-file]")
 {
-	Variables varib;
-	Functions func;
-	varib.Let("a", 2, func);
-	REQUIRE(varib.Var("a", func) == false);
+	Calculator calc;
+	calc.Let("a", 2);
+	REQUIRE(calc.Var("a") == false);
 }
 
 TEST_CASE("let variable Get value from anotrher variable, first is undeclared", "[single-file]")
 {
-	Variables varib;
-	Functions func;
-	varib.Let("b", 1, func);
-	REQUIRE(varib.Let("a", "b", func) == true);
+	Calculator calc;
+	calc.Let("b", 1);
+	REQUIRE(calc.Let("a", "b") == true);
 }
 
 TEST_CASE("let variable Get value from anotrher variable, bots are undeclared", "[single-file]")
 {
-	Variables varib;
-	Functions func;
-	REQUIRE(varib.Let("a", "b", func) == false);
+	Calculator calc;
+	REQUIRE(calc.Let("a", "b") == false);
 }
 
 TEST_CASE("fib", "[single-file]")
 {
-	Variables varib;
-	Functions func;
-	REQUIRE(varib.Let("v0", 0, func));
-	REQUIRE(varib.Let("v1", 1, func));
-	REQUIRE(func.Fn("fib0", "v0"));
-	REQUIRE(func.Fn("fib1", "v1"));
-	REQUIRE(func.Fn("fib2", "fib1", "fib0", "+"));
-	REQUIRE(func.Fn("fib3", "fib2", "fib1", "+"));
-	REQUIRE(func.Fn("fib4", "fib3", "fib2", "+"));
-	REQUIRE(func.Fn("fib5", "fib4", "fib3", "+"));
-	REQUIRE(func.Fn("fib6", "fib5", "fib4", "+"));
-	REQUIRE(func.Get("fib0", varib) == 0);
-	REQUIRE(func.Get("fib1", varib) == 1);
-	REQUIRE(func.Get("fib2", varib) == 1);
-	REQUIRE(func.Get("fib3", varib) == 2);
-	REQUIRE(func.Get("fib4", varib) == 3);
-	REQUIRE(func.Get("fib5", varib) == 5);
-	REQUIRE(func.Get("fib6", varib) == 8);
+	Calculator calc;
+	REQUIRE(calc.Let("v0", 0));
+	REQUIRE(calc.Let("v1", 1));
+	REQUIRE(calc.Fn("fib0", "v0"));
+	REQUIRE(calc.Fn("fib1", "v1"));
+	REQUIRE(calc.Fn("fib2", "fib1", "fib0", "+"));
+	REQUIRE(calc.Fn("fib3", "fib2", "fib1", "+"));
+	REQUIRE(calc.Fn("fib4", "fib3", "fib2", "+"));
+	REQUIRE(calc.Fn("fib5", "fib4", "fib3", "+"));
+	REQUIRE(calc.Fn("fib6", "fib5", "fib4", "+"));
+	REQUIRE(calc.Get("fib0") == 0);
+	REQUIRE(calc.Get("fib1") == 1);
+	REQUIRE(calc.Get("fib2") == 1);
+	REQUIRE(calc.Get("fib3") == 2);
+	REQUIRE(calc.Get("fib4") == 3);
+	REQUIRE(calc.Get("fib5") == 5);
+	REQUIRE(calc.Get("fib6") == 8);
 }
