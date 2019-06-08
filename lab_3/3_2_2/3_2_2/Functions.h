@@ -4,7 +4,7 @@
 #include <map>
 #include <vector>
 
-class Variables;
+class Calculator;
 
 class Functions
 {
@@ -19,15 +19,11 @@ public:
 
 	bool Find(std::string const& function) const;
 
-	double Get(std::string const& function, Variables const& vc) const;
+	double Get(std::string const& function, Calculator const& calc) const;
 
-	std::map<std::string, double> GetAllData(Variables const& vc) const;
+	std::map<std::string, double> GetAllData(Calculator const& calc) const;
 
 private:
-
-	bool FindAny(std::string const& anyName, Variables const& vc) const;
-
-	double GetAny(std::string const& anyName, Variables const& vc) const;
 
 	std::map <std::string, std::vector<std::string>> m_setFunctions;
 };

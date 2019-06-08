@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "Variables.h"
 #include "Functions.h"
+#include "Calculator.h"
 
 Variables::Variables()
 {
@@ -31,7 +32,7 @@ bool Variables::Let(std::string const& variable, double value, Functions &fn)
 	return true;
 }
 
-bool Variables::Let(std::string const& variable1, std::string const& variable2, Functions &fn)
+bool Variables::Let(std::string const& variable1, std::string const& variable2, Functions &fn, Calculator &calc)
 {
 	if (fn.Find(variable1))
 	{
@@ -46,7 +47,7 @@ bool Variables::Let(std::string const& variable1, std::string const& variable2, 
 
 	if (fn.Find(variable2))
 	{
-		m_setVariables[variable1] = fn.Get(variable2, *this);
+		m_setVariables[variable1] = fn.Get(variable2, calc);
 		return true;
 	}
 

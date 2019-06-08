@@ -17,7 +17,7 @@ bool Calculator::Let(std::string const & variable1, double variable2)
 
 bool Calculator::Let(std::string const & variable1, std::string const & variable2)
 {
-	return m_variables.Let(variable1, variable2, m_functions);
+	return m_variables.Let(variable1, variable2, m_functions, *this);
 }
 
 bool Calculator::Find(std::string const & anyName) const
@@ -31,7 +31,7 @@ double Calculator::Get(std::string const & anyName) const
 	{
 		return m_variables.Get(anyName);
 	}
-	return m_functions.Get(anyName, m_variables);
+	return m_functions.Get(anyName, *this);
 }
 
 bool Calculator::Fn(std::string const & function, std::string const & variable1)
@@ -51,5 +51,5 @@ std::map<std::string, double> const & Calculator::GetAllVariables() const
 
 std::map<std::string, double> Calculator::GetAllFunctions() const
 {
-	return m_functions.GetAllData(m_variables);
+	return m_functions.GetAllData(*this);
 }

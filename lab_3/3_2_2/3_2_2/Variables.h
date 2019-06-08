@@ -4,6 +4,7 @@
 #include <map>
 
 class Functions;
+class Calculator;
 
 class Variables
 {
@@ -16,7 +17,7 @@ public:
 
 	bool Let(std::string const& variable1, double variable2, Functions &fn);
 
-	bool Let(std::string const& variable1, std::string const& variable2, Functions &fn);
+	bool Let(std::string const& variable1, std::string const& variable2, Functions &fn, Calculator &calc);
 
 	bool Find(std::string const& variable) const;
 

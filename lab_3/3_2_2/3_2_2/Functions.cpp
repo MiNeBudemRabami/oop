@@ -1,6 +1,6 @@
 #include "pch.h"
-#include "Variables.h"
 #include "Functions.h"
+#include "Calculator.h"
 
 Functions::Functions()
 {
@@ -28,7 +28,7 @@ bool Functions::Find(std::string const& function) const
 	return m_setFunctions.find(function) != m_setFunctions.end();
 }
 
-double Functions::Get(std::string const& function, Variables const& vc) const
+double Functions::Get(std::string const& function, Calculator const& calc) const
 {
 	if (Find(function))
 	{
@@ -37,9 +37,9 @@ double Functions::Get(std::string const& function, Variables const& vc) const
 
 		if (fnData.size() == 1)
 		{
-			if (FindAny(fnData[0], vc))
+			if (calc.Find(fnData[0]))
 			{
-				ans = GetAny(fnData[0], vc);
+				ans = calc.Get(fnData[0]);
 			}
 			else
 			{
@@ -48,10 +48,10 @@ double Functions::Get(std::string const& function, Variables const& vc) const
 		}
 		else if (fnData.size() == 3)
 		{
-			if (FindAny(fnData[0], vc) && FindAny(fnData[2], vc))
+			if (calc.Find(fnData[0]) && calc.Find(fnData[2]))
 			{
-				double left = GetAny(fnData[0], vc);
-				double right = GetAny(fnData[2], vc);
+				double left = calc.Get(fnData[0]);
+				double right = calc.Get(fnData[2]);
 
 				if (fnData[1] == "+")
 				{
@@ -92,32 +92,12 @@ double Functions::Get(std::string const& function, Variables const& vc) const
 	}
 }
 
-std::map<std::string, double> Functions::GetAllData(Variables const& vc) const
+std::map<std::string, double> Functions::GetAllData(Calculator const& calc) const
 {
 	std::map<std::string, double> result;
 	for (auto &function : m_setFunctions)
 	{
-		result[function.first] = Get(function.first, vc);
+		result[function.first] = Get(function.first, calc);
 	}
 	return result;
-}
-
-bool Functions::FindAny(std::string const& anyName, Variables const& vc) const
-{
-	return vc.Find(anyName) || Find(anyName);
-}
-
-double Functions::GetAny(std::string const& anyName, Variables const& vc) const
-{
-	if (!FindAny(anyName, vc))
-	{
-		return nan("");
-	}
-
-	if (Find(anyName))
-	{
-		return Get(anyName, vc);
-	}
-
-	return vc.Get(anyName);
 }
