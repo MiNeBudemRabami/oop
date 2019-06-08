@@ -10,14 +10,14 @@ Functions::~Functions()
 {
 }
 
-bool Functions::fn3(std::string function, std::string variable1, std::string variable2, std::string operation)
+bool Functions::Fn(std::string function, std::string variable1, std::string variable2, std::string operation)
 {
 	setFunctions[function] = { variable1, operation, variable2 };
 	return true;
 }
 	
 
-bool Functions::fn2(std::string function, std::string variable)
+bool Functions::Fn(std::string function, std::string variable)
 {
 	setFunctions[function] = { variable };
 	return true;

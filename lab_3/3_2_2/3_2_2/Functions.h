@@ -13,9 +13,9 @@ public:
 	Functions();
 	~Functions();
 
-	bool fn3(std::string function, std::string variable1, std::string variable2, std::string operation);
+	bool Fn(std::string function, std::string variable1, std::string variable2, std::string operation);
 
-	bool fn2(std::string function, std::string variable1);
+	bool Fn(std::string function, std::string variable1);
 
 	bool find(std::string function) const;
 

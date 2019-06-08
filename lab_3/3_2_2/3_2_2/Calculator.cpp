@@ -12,12 +12,12 @@ bool Calculator::Var(std::string const & variable)
 
 bool Calculator::Let(std::string const & variable1, double variable2)
 {
-	return m_variables.let1(variable1, variable2, m_functions);
+	return m_variables.Let(variable1, variable2, m_functions);
 }
 
 bool Calculator::Let(std::string const & variable1, std::string const & variable2)
 {
-	return m_variables.let2(variable1, variable2, m_functions);
+	return m_variables.Let(variable1, variable2, m_functions);
 }
 
 bool Calculator::Find(std::string const & anyName) const
@@ -36,12 +36,12 @@ double Calculator::Get(std::string const & anyName) const
 
 bool Calculator::Fn(std::string const & function, std::string const & variable1)
 {
-	return m_functions.fn2(function, variable1);
+	return m_functions.Fn(function, variable1);
 }
 
 bool Calculator::Fn(std::string const & function, std::string const & variable1, std::string const & variable2, std::string const & operation)
 {
-	return m_functions.fn3(function, variable1, variable2, operation);
+	return m_functions.Fn(function, variable1, variable2, operation);
 }
 
 std::map<std::string, double> const & Calculator::GetAllVariables() const

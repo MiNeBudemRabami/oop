@@ -20,7 +20,7 @@ bool Variables::var(std::string variable, Functions &fn)
 	return false;
 }
 
-bool Variables::let1(std::string variable, double value, Functions &fn)
+bool Variables::Let(std::string variable, double value, Functions &fn)
 {
 	if (fn.find(variable))
 	{
@@ -31,7 +31,7 @@ bool Variables::let1(std::string variable, double value, Functions &fn)
 	return true;
 }
 
-bool Variables::let2(std::string variable1, std::string variable2, Functions &fn)
+bool Variables::Let(std::string variable1, std::string variable2, Functions &fn)
 {
 	if (fn.find(variable1))
 	{

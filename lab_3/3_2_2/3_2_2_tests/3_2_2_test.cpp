@@ -15,7 +15,7 @@ TEST_CASE("let before var with same variable", "[single-file]")
 {
 	Variables varib;
 	Functions func;
-	varib.let1("a", 2, func);
+	varib.Let("a", 2, func);
 	REQUIRE(varib.var("a", func) == false);
 }
 
@@ -23,30 +23,30 @@ TEST_CASE("let variable get value from anotrher variable, first is undeclared", 
 {
 	Variables varib;
 	Functions func;
-	varib.let1("b", 1, func);
-	REQUIRE(varib.let2("a", "b", func) == true);
+	varib.Let("b", 1, func);
+	REQUIRE(varib.Let("a", "b", func) == true);
 }
 
 TEST_CASE("let variable get value from anotrher variable, bots are undeclared", "[single-file]")
 {
 	Variables varib;
 	Functions func;
-	REQUIRE(varib.let2("a", "b", func) == false);
+	REQUIRE(varib.Let("a", "b", func) == false);
 }
 
 TEST_CASE("fib", "[single-file]")
 {
 	Variables varib;
 	Functions func;
-	REQUIRE(varib.let1("v0", 0, func));
-	REQUIRE(varib.let1("v1", 1, func));
-	REQUIRE(func.fn2("fib0", "v0"));
-	REQUIRE(func.fn2("fib1", "v1"));
-	REQUIRE(func.fn3("fib2", "fib1", "fib0", "+"));
-	REQUIRE(func.fn3("fib3", "fib2", "fib1", "+"));
-	REQUIRE(func.fn3("fib4", "fib3", "fib2", "+"));
-	REQUIRE(func.fn3("fib5", "fib4", "fib3", "+"));
-	REQUIRE(func.fn3("fib6", "fib5", "fib4", "+"));
+	REQUIRE(varib.Let("v0", 0, func));
+	REQUIRE(varib.Let("v1", 1, func));
+	REQUIRE(func.Fn("fib0", "v0"));
+	REQUIRE(func.Fn("fib1", "v1"));
+	REQUIRE(func.Fn("fib2", "fib1", "fib0", "+"));
+	REQUIRE(func.Fn("fib3", "fib2", "fib1", "+"));
+	REQUIRE(func.Fn("fib4", "fib3", "fib2", "+"));
+	REQUIRE(func.Fn("fib5", "fib4", "fib3", "+"));
+	REQUIRE(func.Fn("fib6", "fib5", "fib4", "+"));
 	REQUIRE(func.get("fib0", varib) == 0);
 	REQUIRE(func.get("fib1", varib) == 1);
 	REQUIRE(func.get("fib2", varib) == 1);

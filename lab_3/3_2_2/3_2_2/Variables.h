@@ -14,9 +14,9 @@ public:
 
 	bool var(std::string variable, Functions &fn);
 
-	bool let1(std::string variable1, double variable2, Functions &fn);
+	bool Let(std::string variable1, double variable2, Functions &fn);
 
-	bool let2(std::string variable1, std::string variable2, Functions &fn);
+	bool Let(std::string variable1, std::string variable2, Functions &fn);
 
 	bool find(std::string variable) const;
 
