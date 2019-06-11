@@ -23,6 +23,6 @@ public:
 	bool operator!=(Complex const& complex) const;
 
 private:
-	double real;
-	double image;
+	double m_real;
+	double m_image;
 };

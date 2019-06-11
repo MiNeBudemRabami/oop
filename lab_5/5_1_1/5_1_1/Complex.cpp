@@ -4,49 +4,49 @@
 
 Complex::Complex(double real, double image)
 {
-	this->real = real;
-	this->image = image;
+	this->m_real = real;
+	this->m_image = image;
 }
 
 double Complex::Re()const
 {
-	return real;
+	return m_real;
 }
 
 double Complex::Im()const
 {
-	return image;
+	return m_image;
 }
 
 double Complex::GetMagnitude()const
 {
-	return sqrt(real * real + image * image);
+	return sqrt(m_real * m_real + m_image * m_image);
 }
 
 double Complex::GetArgument()const
 {
-	return atan2(image, real);
+	return atan2(m_image, m_real);
 }
 
 Complex const Complex::operator+(Complex const& complex) const
 {
-	return Complex(real + complex.real, image + complex.image);
+	return Complex(m_real + complex.m_real, m_image + complex.m_image);
 }
 
 Complex const Complex::operator-(Complex const& complex) const
 {
-	return Complex(real - complex.real, image - complex.image);
+	return Complex(m_real - complex.m_real, m_image - complex.m_image);
 }
 
 Complex const Complex::operator*(Complex const& complex) const
 {
-	return Complex(real * complex.real - image * complex.image, real * complex.image + image * complex.real);
+	return Complex(m_real * complex.m_real - m_image * complex.m_image, m_real * complex.m_image + m_image * complex.m_real);
 }
 
 Complex const Complex::operator/(Complex const& complex) const
 {
 	double sqrSum = complex.Re() * complex.Re() + complex.Im() * complex.Im();
-	return *this * Complex(complex.real / sqrSum, -(complex.image / sqrSum));
+	return *this * Complex(complex.m_real / sqrSum, -(complex.m_image / sqrSum));
 }
 
 Complex const Complex::operator+() const
@@ -56,7 +56,7 @@ Complex const Complex::operator+() const
 
 Complex const Complex::operator-() const
 {
-	return Complex(-real, -image);
+	return Complex(-m_real, -m_image);
 }
 
 Complex& Complex::operator+=(Complex const& complex)
@@ -85,8 +85,8 @@ Complex& Complex::operator/=(Complex const& complex)
 
 bool Complex::operator==(Complex const& complex) const
 {
-	bool realsAreEqual = fabs(real - complex.real) < DBL_EPSILON;
-	bool imagesAreEqual = fabs(image - complex.image) < DBL_EPSILON;
+	bool realsAreEqual = fabs(m_real - complex.m_real) < DBL_EPSILON;
+	bool imagesAreEqual = fabs(m_image - complex.m_image) < DBL_EPSILON;
 	return realsAreEqual && imagesAreEqual;
 }
 
