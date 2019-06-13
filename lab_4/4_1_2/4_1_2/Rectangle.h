@@ -8,8 +8,6 @@ class RectangleC : public SolidShape
 public:
 	RectangleC(Point topLeft, double width, double hight, uint32_t outlineColor, uint32_t fillColor);
 
-	~RectangleC();
-
 	double GetArea()const;
 
 	double GetPerimetr()const;
@@ -30,14 +28,14 @@ public:
 
 private:
 
-	Point topLeft;
+	Point m_topLeft;
 
-	double hight;
+	double m_hight;
 
-	double width;
+	double m_width;
 
-	uint32_t fillColor;
+	uint32_t m_fillColor;
 
-	uint32_t outlineColor;
+	uint32_t m_outlineColor;
 };
 

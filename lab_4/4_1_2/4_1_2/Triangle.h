@@ -8,8 +8,6 @@ class Triangle : public SolidShape
 public:
 	Triangle(Point vertex1, Point vertex2, Point vertex3, uint32_t outlineColor, uint32_t fillColor);
 
-	~Triangle();
-
 	double GetArea()const;
 
 	double GetPerimetr()const;
@@ -28,16 +26,16 @@ public:
 
 private:
 
-	Point vertex1;
+	Point m_vertex1;
 	
-	Point vertex2;
+	Point m_vertex2;
 
-	Point vertex3;
+	Point m_vertex3;
 	
-	uint32_t fillColor;
+	uint32_t m_fillColor;
 
-	uint32_t outlineColor;
+	uint32_t m_outlineColor;
 
-	double GetLength(Point v1, Point v2) const;
+	double GetLength(Point vertex1, Point vertex2) const;
 };
 

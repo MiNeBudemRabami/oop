@@ -8,8 +8,6 @@ class LineSegment : public IShape
 public:
 	LineSegment(Point startPoint, Point endPoint, uint32_t outlineColor);
 
-	~LineSegment();
-
 	double GetArea()const;
 
 	double GetLength()const;
@@ -26,10 +24,10 @@ public:
 
 private:
 
-	uint32_t outlineColor;
+	uint32_t m_outlineColor;
 
-	Point startPoint;
+	Point m_startPoint;
 
-	Point endPoint;
+	Point m_endPoint;
 };
 

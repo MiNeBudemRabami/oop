@@ -8,8 +8,6 @@ class Circle : public SolidShape
 public:
 	Circle(Point center, double radius, uint32_t outlineColor, uint32_t fillColor);
 
-	~Circle();
-
 	double GetArea()const;
 
 	double GetPerimetr()const;
@@ -26,12 +24,12 @@ public:
 
 private:
 
-	Point center;
+	Point m_center;
 
-	double radius;
+	double m_radius;
 
-	uint32_t fillColor;
+	uint32_t m_fillColor;
 
-	uint32_t outlineColor;
+	uint32_t m_outlineColor;
 };
 

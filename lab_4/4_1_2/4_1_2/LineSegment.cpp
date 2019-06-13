@@ -4,14 +4,9 @@
 
 LineSegment::LineSegment(Point startPoint, Point endPoint, uint32_t outlineColor)
 {
-	this->startPoint = startPoint;
-	this->endPoint = endPoint;
-	this->outlineColor = outlineColor;
-}
-
-
-LineSegment::~LineSegment()
-{
+	this->m_startPoint = startPoint;
+	this->m_endPoint = endPoint;
+	this->m_outlineColor = outlineColor;
 }
 
 double LineSegment::GetArea() const
@@ -33,20 +28,20 @@ double LineSegment::GetPerimetr() const
 
 std::string LineSegment::ToString() const
 {
-	return "Line has startPoint in " + std::to_string(startPoint.x) + " " + std::to_string(startPoint.y) + " endPoint in " + std::to_string(endPoint.x) + " " + std::to_string(endPoint.y) + " outlineCollor is " + std::to_string(outlineColor);
+	return "Line has startPoint in " + std::to_string(m_startPoint.x) + " " + std::to_string(m_startPoint.y) + " endPoint in " + std::to_string(m_endPoint.x) + " " + std::to_string(m_endPoint.y) + " outlineCollor is " + std::to_string(m_outlineColor);
 }
 
 uint32_t LineSegment::GetOutlineColor() const
 {
-	return outlineColor;
+	return m_outlineColor;
 }
 
 Point LineSegment::GetStartPoint() const
 {
-	return startPoint;
+	return m_startPoint;
 }
 
 Point LineSegment::GetEndPoint() const
 {
-	return endPoint;
+	return m_endPoint;
 }

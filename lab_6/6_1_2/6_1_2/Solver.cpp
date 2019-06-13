@@ -9,6 +9,7 @@ EquationRoots Solve(double a, double b, double c)
 	}
 
 	double dSquare = b * b - 4 * a * c;
+
 	if (dSquare < 0)
 	{
 		throw std::domain_error("No real roots");
