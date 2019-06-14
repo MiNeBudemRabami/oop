@@ -3,10 +3,12 @@
 #include <float.h>
 
 Complex::Complex(double real, double image)
+	:m_real(real), m_image(image)
 {
-	this->m_real = real;
-	this->m_image = image;
+	//this->m_real = real;
+	//this->m_image = image;
 }
+
 
 double Complex::Re()const
 {
