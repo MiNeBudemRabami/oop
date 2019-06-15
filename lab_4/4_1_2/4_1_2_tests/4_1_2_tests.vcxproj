@@ -127,7 +127,6 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\4_1_2\Canvas.cpp" />
     <ClCompile Include="..\4_1_2\Circle.cpp" />
     <ClCompile Include="..\4_1_2\LineSegment.cpp" />
     <ClCompile Include="..\4_1_2\Point.cpp" />
@@ -137,7 +136,6 @@
     <ClCompile Include="tests.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\4_1_2\Canvas.h" />
     <ClInclude Include="..\4_1_2\Circle.h" />
     <ClInclude Include="..\4_1_2\ICanvas.h" />
     <ClInclude Include="..\4_1_2\ICanvasDrawable.h" />
