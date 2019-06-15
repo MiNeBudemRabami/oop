@@ -24,6 +24,8 @@ public:
 
 	Point GetVertex3()const;
 
+	void Draw(ICanvas &canvas) const;
+
 private:
 
 	Point m_vertex1;

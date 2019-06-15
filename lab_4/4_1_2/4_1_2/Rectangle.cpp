@@ -46,7 +46,7 @@ Point RectangleC::GetRightBottom() const
 {
 	Point rightBottom;
 	rightBottom.x = m_topLeft.x + m_width;
-	rightBottom.y = m_topLeft.y - m_hight;
+	rightBottom.y = m_topLeft.y + m_hight;
 	return rightBottom;
 }
 
@@ -58,4 +58,21 @@ double RectangleC::GetWidth() const
 double RectangleC::GetHeight() const
 {
 	return m_hight;
+}
+
+void RectangleC::Draw(ICanvas & canvas) const
+{
+	Point rightBottom = GetRightBottom();
+
+	Point p1 = m_topLeft;
+	Point p2(rightBottom.x, m_topLeft.y);
+	Point p3 = rightBottom;
+	Point p4(m_topLeft.x, rightBottom.y);
+
+	canvas.FillPolygon({ p1, p2, p3, p4 }, m_fillColor);
+
+	canvas.DrawLine(p1, p2, m_outlineColor);
+	canvas.DrawLine(p2, p3, m_outlineColor);
+	canvas.DrawLine(p3, p4, m_outlineColor);
+	canvas.DrawLine(p4, p1, m_outlineColor);
 }

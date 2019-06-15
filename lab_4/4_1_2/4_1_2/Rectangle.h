@@ -26,6 +26,8 @@ public:
 
 	double GetHeight()const;
 
+	void Draw(ICanvas &canvas) const;
+
 private:
 
 	Point m_topLeft;

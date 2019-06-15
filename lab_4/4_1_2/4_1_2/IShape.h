@@ -1,7 +1,9 @@
 #pragma once
 #include <string>
 
-class IShape
+#include "ICanvasDrawable.h"
+
+class IShape : public ICanvasDrawable
 {
 public:
 

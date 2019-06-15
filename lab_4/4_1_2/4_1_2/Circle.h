@@ -22,6 +22,8 @@ public:
 
 	double GetRadius()const;
 
+	void Draw(ICanvas &canvas) const;
+
 private:
 
 	Point m_center;

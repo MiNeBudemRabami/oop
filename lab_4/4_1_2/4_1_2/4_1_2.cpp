@@ -11,6 +11,8 @@
 #include "LineSegment.h"
 #include <algorithm>
 #include <deque>
+#include "Canvas.h"
+#include <fstream>
 
 using namespace std;
 
@@ -81,10 +83,10 @@ map<string, Handler> actionMap = {
 		startPoint.y = stod(parametrSet[2]);
 
 		Point endPoint;
-		endPoint.x = stod(parametrSet[1]);
-		endPoint.y = stod(parametrSet[2]);
+		endPoint.x = stod(parametrSet[3]);
+		endPoint.y = stod(parametrSet[4]);
 
-		shapeSet.push_back(make_unique<LineSegment>(startPoint, endPoint, stol(parametrSet[4], 0, 16)));
+		shapeSet.push_back(make_unique<LineSegment>(startPoint, endPoint, stol(parametrSet[5], 0, 16)));
 	} },
 	{ "rectangle", [](vector <string> const& parametrSet, vector <unique_ptr<IShape>> &shapeSet) {
 		Point topLeft;
@@ -99,19 +101,34 @@ map<string, Handler> actionMap = {
 		vertex1.y = stod(parametrSet[2]);
 
 		Point vertex2;
-		vertex1.x = stod(parametrSet[3]);
-		vertex1.y = stod(parametrSet[4]);
+		vertex2.x = stod(parametrSet[3]);
+		vertex2.y = stod(parametrSet[4]);
 
 		Point vertex3;
-		vertex1.x = stod(parametrSet[5]);
-		vertex1.y = stod(parametrSet[6]);
+		vertex3.x = stod(parametrSet[5]);
+		vertex3.y = stod(parametrSet[6]);
 
 		shapeSet.push_back(make_unique<Triangle>(vertex1, vertex2, vertex3, stol(parametrSet[7], 0, 16), stol(parametrSet[8], 0, 16)));
+	} },
+	{ "draw", [](vector <string> const& parametrSet, vector <unique_ptr<IShape>> &shapeSet) {
+		std::string svgFilePath = parametrSet[1];
+		std::ofstream svgFile(svgFilePath);
+
+		Canvas canvas(svgFile);
+		for (auto &shape : shapeSet)
+		{
+			shape->Draw(canvas);
+		}
 	} },
 };
 
 void ApplyAction(vector <string> const& parametrSet, vector <unique_ptr<IShape>> &shapeSet)
 {
+	if (parametrSet.empty())
+	{
+		return;
+	}
+
 	auto it = actionMap.find(parametrSet[0]);
 	if (it != actionMap.end())
 	{

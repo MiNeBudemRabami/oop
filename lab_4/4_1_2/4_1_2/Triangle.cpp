@@ -52,6 +52,19 @@ Point Triangle::GetVertex3() const
 	return m_vertex3;
 }
 
+void Triangle::Draw(ICanvas & canvas) const
+{
+	Point p1 = GetVertex1();
+	Point p2 = GetVertex2();
+	Point p3 = GetVertex3();
+
+	canvas.FillPolygon({ p1, p2, p3 }, m_fillColor);
+
+	canvas.DrawLine(p1, p2, m_outlineColor);
+	canvas.DrawLine(p2, p3, m_outlineColor);
+	canvas.DrawLine(p3, p1, m_outlineColor);
+}
+
 double Triangle::GetLength(Point v1, Point v2) const
 {
 	return sqrt((v2.x - v1.x)*(v2.x - v1.x) + (v2.y - v1.y)*(v2.y - v1.y));

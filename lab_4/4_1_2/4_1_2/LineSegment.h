@@ -22,6 +22,8 @@ public:
 
 	Point GetEndPoint()const;
 
+	void Draw(ICanvas &canvas) const;
+
 private:
 
 	uint32_t m_outlineColor;
