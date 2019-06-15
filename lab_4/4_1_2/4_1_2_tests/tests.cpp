@@ -56,7 +56,7 @@ TEST_CASE("rectangle processing", "[single-file]")
 	REQUIRE(rectangle.GetLeftTop().x == 10);
 	REQUIRE(rectangle.GetLeftTop().y == 5);
 	REQUIRE(rectangle.GetRightBottom().x == 20);
-	REQUIRE(rectangle.GetRightBottom().y == -5);
+	REQUIRE(rectangle.GetRightBottom().y == 15);
 	REQUIRE(rectangle.ToString() == "rectangle has topLeftPoint in 10.0000005.000000 hight 10.000000 weigth 10.000000 outlineColor 111111 fillColor 222222");
 }
 
