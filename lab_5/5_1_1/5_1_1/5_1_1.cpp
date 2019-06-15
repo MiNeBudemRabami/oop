@@ -29,6 +29,12 @@ TEST_CASE("c+r", "[single-file]")
 	REQUIRE(a + 4 == Complex(5, 2));
 }
 
+TEST_CASE("r+c", "[single-file]")
+{
+	Complex a(1, 2);
+	REQUIRE(4 + a == Complex(5, 2));
+}
+
 TEST_CASE("c-c", "[single-file]")
 {
 	Complex a(1, 2);

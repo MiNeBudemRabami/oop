@@ -5,28 +5,12 @@
 
 TEST_CASE("a=0", "[single-file]")
 {
-	try
-	{
-		auto r = Solve(0, 1, 2);
-	}
-	catch (std::invalid_argument const&)
-	{
-		return;
-	}
-	REQUIRE(false);
+	REQUIRE_THROWS_AS(Solve(0, 1, 2), std::invalid_argument);
 }
 
 TEST_CASE("no roots", "[single-file]")
 {
-	try
-	{
-		auto r = Solve(1, 1, 1);
-	}
-	catch (std::domain_error const&)
-	{
-		return;
-	}
-	REQUIRE(false);
+	REQUIRE_THROWS_AS(Solve(1, 1, 1), std::domain_error);
 }
 
 TEST_CASE("1 root", "[single-file]")
@@ -42,4 +26,12 @@ TEST_CASE("2 roots", "[single-file]")
 	REQUIRE(r.numRoots == 2);
 	REQUIRE(r.roots[0] == Approx(4.56155));
 	REQUIRE(r.roots[1] == Approx(0.438447));
+}
+
+TEST_CASE("2 int roots", "[single-file]")
+{
+	auto r = Solve(1, -5, 6);
+	REQUIRE(r.numRoots == 2);
+	REQUIRE(r.roots[0] == Approx(3));
+	REQUIRE(r.roots[1] == Approx(2));
 }
